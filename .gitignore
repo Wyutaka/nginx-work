@@ -1,0 +1,6 @@
+*.o
+
+openssl*
+pcre*
+zlib*
+*.tar.gz
