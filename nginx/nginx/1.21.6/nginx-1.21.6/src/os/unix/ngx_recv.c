@@ -71,6 +71,20 @@ ngx_unix_recv(ngx_connection_t *c, u_char *buf, size_t size)
         ngx_log_debug3(NGX_LOG_DEBUG_EVENT, c->log, 0,
                        "recv: fd:%d %z of %uz", c->fd, n, size);
 
+        ngx_log_debug0(NGX_LOG_DEBUG_EVENT, c->log, 0,
+                    "\n\n");                       
+
+        int char_buf_size = size / sizeof(char);
+        int i;
+        for (i = 0; i < char_buf_size; i++)
+        {   
+            ngx_log_debug1(NGX_LOG_DEBUG_EVENT, c->log, 0,
+                       "%x", 0xFF & (char)buf[i]);
+        }
+    
+        ngx_log_debug0(NGX_LOG_DEBUG_EVENT, c->log, 0,
+                    "\n\n");    
+
         if (n == 0) {
             rev->ready = 0;
             rev->eof = 1;
