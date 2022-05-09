@@ -2040,10 +2040,13 @@ ngx_stream_proxy_log_error(ngx_log_t *log, u_char *buf, size_t len)
     pc = u->peer.connection;
 
     p = ngx_snprintf(p, len,
-                     ", bytes from/to client:%O/%O"
+                     ", bytes from/to client:%O/%O, %p"
                      ", bytes from/to upstream:%O/%O",
-                     s->received, s->connection->sent,
+                     s->received, s->connection->sent, s
                      u->received, pc ? pc->sent : 0);
+
+    // この行だとエラーが起こる(core)
+    // ngx_log_error(NGX_LOG_INFO, pc->log, 0,  "aho hoge in ngx_stream_proxy_log_error");
 
     return p;
 }
