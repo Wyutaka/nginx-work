@@ -226,5 +226,3 @@ void ngx_free_connection(ngx_connection_t *c);
 void ngx_reusable_connection(ngx_connection_t *c, ngx_uint_t reusable);
 
 #endif /* _NGX_CONNECTION_H_INCLUDED_ */
-
-

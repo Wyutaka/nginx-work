@@ -1587,7 +1587,7 @@ ngx_stream_proxy_process(ngx_stream_session_t *s, ngx_uint_t from_upstream,
     size_t                        size, limit_rate;
     ssize_t                       n;
     ngx_buf_t                    *b;
-    ngx_int_t                     rc;
+    ngx_int_t                     rc; // resource
     ngx_uint_t                    flags, *packets;
     ngx_msec_t                    delay;
     ngx_chain_t                  *cl, **ll, **out, **busy;
@@ -1600,6 +1600,10 @@ ngx_stream_proxy_process(ngx_stream_session_t *s, ngx_uint_t from_upstream,
 
     c = s->connection;
     pc = u->connected ? u->peer.connection : NULL;
+
+
+    ngx_log_debug0(NGX_LOG_DEBUG_STREAM, s->connection->log, 0,
+                   "testin ngx_stream_proxy_process");
 
     if (c->type == SOCK_DGRAM && (ngx_terminate || ngx_exiting)) {
 
@@ -1691,6 +1695,17 @@ ngx_stream_proxy_process(ngx_stream_session_t *s, ngx_uint_t from_upstream,
             c->log->action = recv_action;
 
             n = src->recv(src, b->last, size);
+            
+            int i;
+            for (i = 0; i < (int)size; i++)
+            {
+                ngx_log_debug1(NGX_LOG_DEBUG_STREAM, s->connection->log, 0,
+                   "%c ", (unsigned char)b->last[i]);
+            }
+            
+
+            ngx_log_debug2(NGX_LOG_DEBUG_STREAM, s->connection->log, 0,
+                   "data size: %uz\n data is: %us", size, b->last);
 
             if (n == NGX_AGAIN) {
                 break;
@@ -2040,13 +2055,10 @@ ngx_stream_proxy_log_error(ngx_log_t *log, u_char *buf, size_t len)
     pc = u->peer.connection;
 
     p = ngx_snprintf(p, len,
-                     ", bytes from/to client:%O/%O, %p"
+                     ", bytes from/to client:%O/%O"
                      ", bytes from/to upstream:%O/%O",
-                     s->received, s->connection->sent, s
+                     s->received, s->connection->sent,
                      u->received, pc ? pc->sent : 0);
-
-    // この行だとエラーが起こる(core)
-    // ngx_log_error(NGX_LOG_INFO, pc->log, 0,  "aho hoge in ngx_stream_proxy_log_error");
 
     return p;
 }

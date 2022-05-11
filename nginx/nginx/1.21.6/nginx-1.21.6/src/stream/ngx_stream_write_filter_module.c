@@ -61,8 +61,6 @@ ngx_stream_write_filter(ngx_stream_session_t *s, ngx_chain_t *in,
 
     ctx = ngx_stream_get_module_ctx(s, ngx_stream_write_filter_module);
 
-
-
     if (ctx == NULL) {
         ctx = ngx_pcalloc(s->connection->pool,
                           sizeof(ngx_stream_write_filter_ctx_t));
@@ -81,7 +79,6 @@ ngx_stream_write_filter(ngx_stream_session_t *s, ngx_chain_t *in,
         c = s->upstream->peer.connection;
         out = &ctx->from_downstream;
     }
-
 
     if (c->error) {
         return NGX_ERROR;
@@ -178,20 +175,6 @@ ngx_stream_write_filter(ngx_stream_session_t *s, ngx_chain_t *in,
                        cl->buf->last - cl->buf->pos,
                        cl->buf->file_pos,
                        cl->buf->file_last - cl->buf->file_pos);
-
-        // ngx_log_debug1(NGX_LOG_DEBUG_EVENT, c->log, 0,
-        //    "write buf %s ", cl->buf->last);
-
-    /* error and debug log */
-            // ngx_log_error(NGX_LOG_INFO, c->log, 0, "client prematurely
-            //   closed connection");
-        
-        // unsigned char *message = cl->buf->last;
-
-
-    ngx_log_error(NGX_LOG_INFO, c->log, 0,  (const char *)"aho hoge");
-
-        ngx_log_error(NGX_LOG_INFO, c->log, 0, (const char *)cl->buf->last);
 
         if (ngx_buf_size(cl->buf) == 0 && !ngx_buf_special(cl->buf)) {
             ngx_log_error(NGX_LOG_ALERT, c->log, 0,

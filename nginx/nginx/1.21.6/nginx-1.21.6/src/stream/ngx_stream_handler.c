@@ -224,16 +224,12 @@ ngx_stream_proxy_protocol_handler(ngx_event_t *rev)
         ngx_stream_finalize_session(s, NGX_STREAM_OK);
         return;
     }
-
+    //ここではよばれていない
     n = recv(c->fd, (char *) buf, sizeof(buf), MSG_PEEK);
 
     err = ngx_socket_errno;
 
     ngx_log_debug1(NGX_LOG_DEBUG_STREAM, c->log, 0, "recv(): %z", n);
-
-
-    ngx_log_error(NGX_LOG_INFO, c->log, 0,  (const char *)"aho hoge");
-    ngx_log_error(NGX_LOG_INFO, c->log, 0,  (const char *)n);
 
     if (n == -1) {
         if (err == NGX_EAGAIN) {
