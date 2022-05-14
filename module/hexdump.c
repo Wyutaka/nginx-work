@@ -89,7 +89,7 @@ void DumpHex(const void* data, char *dmsg, size_t size) {
 				{
 					if (((unsigned char*)data)[point + k] == 0x00)
 					{
-						str[point+ k] = 0x01;
+						str[point+ k] = 0x20;
 					} else {
 						str[point+ k] = ((unsigned char*)data)[point + k];
 					}
@@ -127,7 +127,7 @@ void DumpHex(const void* data, char *dmsg, size_t size) {
 				{
 					if (((unsigned char*)data)[point + k] == 0x00)
 					{
-						str[point+ k] = 0x01;
+						str[point+ k] = 0x20;
 					} else {
 						str[point+ k] = ((unsigned char*)data)[point + k];
 					}
