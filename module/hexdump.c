@@ -49,7 +49,7 @@ int main(void)
     char *hoges2 = str2;
     char *dmsg;
 
-    dmsg = (char *)calloc(sizeof(str2), sizeof(char));
+    dmsg = (char *)calloc(sizeof(str2), sizeof(char)*5);
     
     DumpHex(hoges2, dmsg, sizeof(str2));
 
@@ -77,9 +77,10 @@ void DumpHex(const void* data, char *dmsg, size_t size) {
 			rdmsg[i] = ((unsigned char*)data)[i];
     		strncpy(dmsg + sdmsg, ascii[((unsigned char*)data)[i]], sizeof(ascii[((unsigned char*)data)[i]]));
 			sdmsg += sizeof(ascii[((unsigned char*)data)[i]]);
-	
+
+		// printf("point is : %d\n", sdmsg);
 		if ((i+1) % 8 == 0 || i+1 == size) {
-			printf(" ");  
+			printf(" ");
     		strncpy(dmsg + sdmsg, " ", 1);
 			sdmsg += 1;
 			if ((i+1) % 16 == 0) {
@@ -93,18 +94,15 @@ void DumpHex(const void* data, char *dmsg, size_t size) {
 					} else {
 						str[point+ k] = ((unsigned char*)data)[point + k];
 					}
-
-			    	// strncpy(str + k, rdmsg + (((i+1)/16)-1)*16, 16); // (i+1)/16)-1)*16 その行の初めの位置 // そのままdmsgに代入すれば良いのでは？
 				}
-				
-			    // strncpy(str, rdmsg + (((i+1)/16)-1)*16, 16);
-				printf("|  %s \n", str);
-    			strncpy(dmsg + sdmsg, "| ", 2);
-				sdmsg += 2;
+			
+				printf("|  %s \n", str); // この次が絶対一つずれている
+    			strncpy(dmsg + sdmsg, "|  ", 3);
+				sdmsg += 3;
     			strncpy(dmsg + sdmsg, str, 16);
 				sdmsg += 16;
     			strncpy(dmsg + sdmsg, " \n", 2);
-				sdmsg += 2;
+				sdmsg += 1;
 			} else if (i+1 == size) {   
 				if ((i+1) % 16 <= 8) {
 					printf(" ");  
@@ -120,7 +118,7 @@ void DumpHex(const void* data, char *dmsg, size_t size) {
 				
 			    char *str = (char *)calloc((i+1) % 16, sizeof(char)); 
 			    strncpy(str, rdmsg + size - ((i+1) % 16) , (i+1) % 16);
-				printf("|  %s \n", str); 
+				
 
 				int point = size - (size % 16); // nullの場合は別にする, (i+1)/16)-1)*16 その行の初めの位置
 				for (k = 0; k < (size) % 16; k++)
@@ -131,17 +129,14 @@ void DumpHex(const void* data, char *dmsg, size_t size) {
 					} else {
 						str[point+ k] = ((unsigned char*)data)[point + k];
 					}
-			    	// strncpy(str + k, rdmsg + (((i+1)/16)-1)*16, 16); // (i+1)/16)-1)*16 その行の初めの位置
 				}
-				// 
-			    // strncpy(str, rdmsg + (((i+1)/16)-1)*16, 16);
-				printf("|  %s \n", str);
-    			strncpy(dmsg + sdmsg, "| ", 2);
-				sdmsg += 2;
+				printf("|  %s \n", str); 
+    			strncpy(dmsg + sdmsg, "|  ", 3);
+				sdmsg += 3;
     			strncpy(dmsg + sdmsg, str, size % 16);
 				sdmsg += size % 16;
     			strncpy(dmsg + sdmsg, " \n", 2);
-				sdmsg += 2;
+				sdmsg += 1;
 
 			}
 		}
