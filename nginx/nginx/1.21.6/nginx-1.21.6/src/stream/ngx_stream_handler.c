@@ -224,7 +224,7 @@ ngx_stream_proxy_protocol_handler(ngx_event_t *rev)
         ngx_stream_finalize_session(s, NGX_STREAM_OK);
         return;
     }
-    //ここではよばれていない
+
     n = recv(c->fd, (char *) buf, sizeof(buf), MSG_PEEK);
 
     err = ngx_socket_errno;

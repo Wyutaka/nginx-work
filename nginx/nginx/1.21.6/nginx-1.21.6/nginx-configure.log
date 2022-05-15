@@ -1,5 +1,5 @@
 checking for OS
- + Linux 5.13.0-40-generic x86_64
+ + Linux 5.4.72-microsoft-standard-WSL2 x86_64
 checking for C compiler ... found
  + using GNU C compiler
  + gcc version: 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1) 
@@ -108,26 +108,25 @@ checking for sysconf(_SC_NPROCESSORS_ONLN) ... found
 checking for sysconf(_SC_LEVEL1_DCACHE_LINESIZE) ... found
 checking for openat(), fstatat() ... found
 checking for getaddrinfo() ... found
-checking for OpenSSL library ... found
 checking for zlib library ... found
 creating objs/Makefile
 
 Configuration summary
   + using PCRE2 library: ../pcre2-10.39
-  + using system OpenSSL library
+  + OpenSSL library is not used
   + using system zlib library
 
   nginx path prefix: "/usr/local/nginx"
-  nginx binary file: "/usr/sbin/nginx"
+  nginx binary file: "/usr/local/nginx/sbin/nginx"
   nginx modules path: "/usr/local/nginx/modules"
-  nginx configuration prefix: "/etc/nginx"
-  nginx configuration file: "/etc/nginx/nginx.conf"
-  nginx pid file: "/var/run/nginx.pid"
-  nginx error log file: "/var/log/nginx/error.log"
-  nginx http access log file: "/var/log/nginx/access.log"
-  nginx http client request body temporary files: "/var/lib/nginx/body"
-  nginx http proxy temporary files: "/var/lib/nginx/proxy"
-  nginx http fastcgi temporary files: "/var/lib/nginx/fastcgi"
+  nginx configuration prefix: "/usr/local/nginx/conf"
+  nginx configuration file: "/usr/local/nginx/conf/nginx.conf"
+  nginx pid file: "/usr/local/nginx/logs/nginx.pid"
+  nginx error log file: "/usr/local/nginx/logs/error.log"
+  nginx http access log file: "/usr/local/nginx/logs/access.log"
+  nginx http client request body temporary files: "client_body_temp"
+  nginx http proxy temporary files: "proxy_temp"
+  nginx http fastcgi temporary files: "fastcgi_temp"
   nginx http uwsgi temporary files: "uwsgi_temp"
   nginx http scgi temporary files: "scgi_temp"
 

@@ -114,12 +114,10 @@ ngx_log_error_core(ngx_uint_t level, ngx_log_t *log, ngx_err_t err,
 
     last = errstr + NGX_MAX_ERROR_STR;
 
-    // ログ時刻
     p = ngx_cpymem(errstr, ngx_cached_err_log_time.data,
                    ngx_cached_err_log_time.len);
-    
-    // ログレベル
-    p = ngx_slprintf(p, last, " [%V] unun", &err_levels[level]);
+
+    p = ngx_slprintf(p, last, " [%V] ", &err_levels[level]);
 
     /* pid#tid */
     p = ngx_slprintf(p, last, "%P#" NGX_TID_T_FMT ": ",
@@ -204,12 +202,11 @@ ngx_log_error_core(ngx_uint_t level, ngx_log_t *log, ngx_err_t err,
         return;
     }
 
-    // 呼ばれていないっぽい？？
     msg -= (7 + err_levels[level].len + 3);
 
     (void) ngx_sprintf(msg, "nginx: [%V] ", &err_levels[level]);
-    // ここが出力関数・・・というわけではない
-    // (void) ngx_write_console(ngx_stderr, msg, p - msg);
+
+    (void) ngx_write_console(ngx_stderr, msg, p - msg);
 }
 
 

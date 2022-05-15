@@ -1,4 +1,4 @@
-#define NGX_CONFIGURE " --sbin-path=/usr/sbin/nginx --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/lock/nginx.lock --http-log-path=/var/log/nginx/access.log --http-client-body-temp-path=/var/lib/nginx/body --http-proxy-temp-path=/var/lib/nginx/proxy --with-http_stub_status_module --http-fastcgi-temp-path=/var/lib/nginx/fastcgi --with-debug --with-http_ssl_module --with-http_gzip_static_module --with-http_gunzip_module --with-pcre-jit --with-stream --with-pcre=../pcre2-10.39"
+#define NGX_CONFIGURE " --with-pcre=../pcre2-10.39 --with-stream --with-debug"
 
 #ifndef NGX_DEBUG
 #define NGX_DEBUG  1
@@ -378,16 +378,6 @@
 #endif
 
 
-#ifndef NGX_HTTP_GZIP
-#define NGX_HTTP_GZIP  1
-#endif
-
-
-#ifndef NGX_HTTP_GZIP
-#define NGX_HTTP_GZIP  1
-#endif
-
-
 #ifndef NGX_CRYPT
 #define NGX_CRYPT  1
 #endif
@@ -398,11 +388,6 @@
 #endif
 
 
-#ifndef NGX_HTTP_SSL
-#define NGX_HTTP_SSL  1
-#endif
-
-
 #ifndef NGX_HTTP_X_FORWARDED_FOR
 #define NGX_HTTP_X_FORWARDED_FOR  1
 #endif
@@ -410,11 +395,6 @@
 
 #ifndef NGX_HTTP_UPSTREAM_ZONE
 #define NGX_HTTP_UPSTREAM_ZONE  1
-#endif
-
-
-#ifndef NGX_STAT_STUB
-#define NGX_STAT_STUB  1
 #endif
 
 
@@ -433,21 +413,6 @@
 #endif
 
 
-#ifndef NGX_HAVE_PCRE_JIT
-#define NGX_HAVE_PCRE_JIT  1
-#endif
-
-
-#ifndef NGX_OPENSSL
-#define NGX_OPENSSL  1
-#endif
-
-
-#ifndef NGX_SSL
-#define NGX_SSL  1
-#endif
-
-
 #ifndef NGX_ZLIB
 #define NGX_ZLIB  1
 #endif
@@ -459,52 +424,52 @@
 
 
 #ifndef NGX_CONF_PREFIX
-#define NGX_CONF_PREFIX  "/etc/nginx/"
+#define NGX_CONF_PREFIX  "conf/"
 #endif
 
 
 #ifndef NGX_SBIN_PATH
-#define NGX_SBIN_PATH  "/usr/sbin/nginx"
+#define NGX_SBIN_PATH  "sbin/nginx"
 #endif
 
 
 #ifndef NGX_CONF_PATH
-#define NGX_CONF_PATH  "/etc/nginx/nginx.conf"
+#define NGX_CONF_PATH  "conf/nginx.conf"
 #endif
 
 
 #ifndef NGX_PID_PATH
-#define NGX_PID_PATH  "/var/run/nginx.pid"
+#define NGX_PID_PATH  "logs/nginx.pid"
 #endif
 
 
 #ifndef NGX_LOCK_PATH
-#define NGX_LOCK_PATH  "/var/lock/nginx.lock"
+#define NGX_LOCK_PATH  "logs/nginx.lock"
 #endif
 
 
 #ifndef NGX_ERROR_LOG_PATH
-#define NGX_ERROR_LOG_PATH  "/var/log/nginx/error.log"
+#define NGX_ERROR_LOG_PATH  "logs/error.log"
 #endif
 
 
 #ifndef NGX_HTTP_LOG_PATH
-#define NGX_HTTP_LOG_PATH  "/var/log/nginx/access.log"
+#define NGX_HTTP_LOG_PATH  "logs/access.log"
 #endif
 
 
 #ifndef NGX_HTTP_CLIENT_TEMP_PATH
-#define NGX_HTTP_CLIENT_TEMP_PATH  "/var/lib/nginx/body"
+#define NGX_HTTP_CLIENT_TEMP_PATH  "client_body_temp"
 #endif
 
 
 #ifndef NGX_HTTP_PROXY_TEMP_PATH
-#define NGX_HTTP_PROXY_TEMP_PATH  "/var/lib/nginx/proxy"
+#define NGX_HTTP_PROXY_TEMP_PATH  "proxy_temp"
 #endif
 
 
 #ifndef NGX_HTTP_FASTCGI_TEMP_PATH
-#define NGX_HTTP_FASTCGI_TEMP_PATH  "/var/lib/nginx/fastcgi"
+#define NGX_HTTP_FASTCGI_TEMP_PATH  "fastcgi_temp"
 #endif
 
 

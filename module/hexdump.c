@@ -30,7 +30,7 @@ int main(void)
 {
 	char *hoges;
 	// char str1[ARRAY_SIZE] = "abc";
-	char str2[] = {0x63, 0x61, 0x74, 0x00, 0x75, 0x63, 0x61, 0x74, 0x00, 0x75, 0x63, 0x61, 0x74, 0x00, 0x75, 0x63, 0x61, 0x74, 0x00};
+	char str2[] = {0x38, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,0x75, 0x63, 0x61, 0x74, 0x00, 0x75, 0x63, 0x61, 0x74, 0x00};
 
 	hoges = (char *)calloc(ARRAY_SIZE, sizeof(char));
 
@@ -63,6 +63,8 @@ int main(void)
 
 
 // 16回毎に1回プリント
+// すべて0x00の場合は無視
+
 
 void DumpHex(const void *data, size_t size)
 {
@@ -73,6 +75,7 @@ void DumpHex(const void *data, size_t size)
 	{
 		char rdmsg[68];
 		int sdmsg = 0; 
+		int allnull = 0;
 		for (i = 0; i < 16; ++i)
 		{
 			strncpy(rdmsg + sdmsg, ascii[((unsigned char *)data)[i + (l * 16)]], sizeof(ascii[0]));
@@ -96,6 +99,7 @@ void DumpHex(const void *data, size_t size)
 					}
 					else
 					{
+						allnull = 1;
 						str[k] = ((unsigned char *)data)[k + (l * 16)];
 					}
 				}
@@ -107,13 +111,14 @@ void DumpHex(const void *data, size_t size)
 				sdmsg += 1;
 			}
 		}
-		printf("%s", rdmsg);
+		if (allnull != 0) printf("%s", rdmsg);
 	}
 
 	if (size % 16 > 0)
 	{	
 		char rdmsg[68];
 		int sdmsg = 0; // sdmsg : dmsgの参照する位置
+		int allnull = 0;
 		for (i = 0; i < size % 16; i++)
 		{
 			strncpy(rdmsg + sdmsg, ascii[((unsigned char *)data)[i + (l * 16)]], sizeof(ascii[0]));
@@ -159,6 +164,6 @@ void DumpHex(const void *data, size_t size)
 				sdmsg += 1;
 			}
 		}
-		printf("%s", rdmsg);
+		if (allnull != 0) printf("%s", rdmsg);
 	}
 }

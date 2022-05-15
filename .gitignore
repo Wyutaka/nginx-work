@@ -1,6 +1,7 @@
 *.o
-
+./nginx/nginx/1.21.6/nginx-1.21.6/objs/nginx
 openssl*
 pcre*
 zlib*
 *.tar.gz
+a.out
