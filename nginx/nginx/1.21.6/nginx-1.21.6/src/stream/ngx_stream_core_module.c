@@ -170,8 +170,8 @@ ngx_stream_core_generic_phase(ngx_stream_session_t *s,
      * used by all phases, except for preread and content
      */
 
-    ngx_log_debug1(NGX_LOG_DEBUG_STREAM, s->connection->log, 0,
-                   "generic phase: %ui", s->phase_handler);
+    // ngx_log_debug1(NGX_LOG_DEBUG_STREAM, s->connection->log, 0,
+    //                "generic phase: %ui", s->phase_handler);
 
     rc = ph->handler(s);
 

@@ -405,8 +405,8 @@ ngx_stream_proxy_handler(ngx_stream_session_t *s)
 
     pscf = ngx_stream_get_module_srv_conf(s, ngx_stream_proxy_module);
 
-    ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
-                   "proxy connection handler");
+    // ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
+    //                "proxy connection handler");
 
     u = ngx_pcalloc(c->pool, sizeof(ngx_stream_upstream_t));
     if (u == NULL) {
@@ -1579,15 +1579,15 @@ ngx_stream_proxy_test_connect(ngx_connection_t *c)
 
 
 
-const char ascii[128][3] = {
-	"00 ", "01 ", "02 ", "03 ", "04 ", "05 ", "06 ", "07 ", "08 ", "09 ", "0A ", "0B ", "0C ", "0D ", "0E ", "0F ", "10 ",
-	"11 ", "12 ", "13 ", "14 ", "15 ", "16 ", "17 ", "18 ", "19 ", "1A ", "1B ", "1C ", "1D ", "1E ", "1F ", "20 ", "21 ",
-	"22 ", "23 ", "24 ", "25 ", "26 ", "27 ", "28 ", "29 ", "2A ", "2B ", "2C ", "2D ", "2E ", "2F ", "30 ", "31 ", "32 ",
-	"33 ", "34 ", "35 ", "36 ", "37 ", "38 ", "39 ", "3A ", "3B ", "3C ", "3D ", "3E ", "3F ", "40 ", "41 ", "42 ", "43 ",
-	"44 ", "45 ", "46 ", "47 ", "48 ", "49 ", "4A ", "4B ", "4C ", "4D ", "4E ", "4F ", "50 ", "51 ", "52 ", "53 ", "54 ",
-	"55 ", "56 ", "57 ", "58 ", "59 ", "5A ", "5B ", "5C ", "5D ", "5E ", "5F ", "60 ", "61 ", "62 ", "63 ", "64 ", "65 ",
-	"66 ", "67 ", "68 ", "69 ", "6A ", "6B ", "6C ", "6D ", "6E ", "6F ", "70 ", "71 ", "72 ", "73 ", "74 ", "75 ", "76 ",
-	"77 ", "78 ", "79 ", "7A ", "7B ", "7C ", "7D ", "7E ", "7F "};
+// char ascii[128][3] = {
+// 	"00 ", "01 ", "02 ", "03 ", "04 ", "05 ", "06 ", "07 ", "08 ", "09 ", "0A ", "0B ", "0C ", "0D ", "0E ", "0F ", "10 ",
+// 	"11 ", "12 ", "13 ", "14 ", "15 ", "16 ", "17 ", "18 ", "19 ", "1A ", "1B ", "1C ", "1D ", "1E ", "1F ", "20 ", "21 ",
+// 	"22 ", "23 ", "24 ", "25 ", "26 ", "27 ", "28 ", "29 ", "2A ", "2B ", "2C ", "2D ", "2E ", "2F ", "30 ", "31 ", "32 ",
+// 	"33 ", "34 ", "35 ", "36 ", "37 ", "38 ", "39 ", "3A ", "3B ", "3C ", "3D ", "3E ", "3F ", "40 ", "41 ", "42 ", "43 ",
+// 	"44 ", "45 ", "46 ", "47 ", "48 ", "49 ", "4A ", "4B ", "4C ", "4D ", "4E ", "4F ", "50 ", "51 ", "52 ", "53 ", "54 ",
+// 	"55 ", "56 ", "57 ", "58 ", "59 ", "5A ", "5B ", "5C ", "5D ", "5E ", "5F ", "60 ", "61 ", "62 ", "63 ", "64 ", "65 ",
+// 	"66 ", "67 ", "68 ", "69 ", "6A ", "6B ", "6C ", "6D ", "6E ", "6F ", "70 ", "71 ", "72 ", "73 ", "74 ", "75 ", "76 ",
+// 	"77 ", "78 ", "79 ", "7A ", "7B ", "7C ", "7D ", "7E ", "7F "};
 
 void dumpHex(const void *data, ngx_stream_session_t *s, size_t size)
 {
@@ -1598,7 +1598,7 @@ void dumpHex(const void *data, ngx_stream_session_t *s, size_t size)
 	{
 		char rdmsg[68];
 		int sdmsg = 0; 
-		int allnull = 0;
+		// int allnull = 0;
 		for (i = 0; i < 16; ++i)
 		{
 			strncpy(rdmsg + sdmsg, ascii[((unsigned char *)data)[i + (l * 16)]], sizeof(ascii[0]));
@@ -1616,13 +1616,13 @@ void dumpHex(const void *data, ngx_stream_session_t *s, size_t size)
 				strncpy(str, data + (l * 16), 16);
 				for (k = 0; k < 16; k++)
 				{
-					if (((unsigned char *)data)[k + (l * 16)] == 0x00)
+					if (((unsigned char *)data)[k + (l * 16)] <= 0x20 && ((unsigned char *)data)[k + (l * 16)] >= 0x128)
 					{
-						str[k] = 0x20;
+						str[k] = 0x126;
 					}
 					else
 					{
-						allnull = 1;
+						// allnull = 1;
 						str[k] = ((unsigned char *)data)[k + (l * 16)];
 					}
 				}
@@ -1634,7 +1634,7 @@ void dumpHex(const void *data, ngx_stream_session_t *s, size_t size)
 				// sdmsg += 1;
 			}
 		}
-		if (allnull != 0) ngx_log_debug1(NGX_LOG_DEBUG_STREAM, s->connection->log, 0,
+		ngx_log_debug1(NGX_LOG_DEBUG_STREAM, s->connection->log, 0,
                            "%s", rdmsg);
 	}
 
@@ -1642,7 +1642,7 @@ void dumpHex(const void *data, ngx_stream_session_t *s, size_t size)
 	{	
 		char rdmsg[68];
 		int sdmsg = 0; // sdmsg : dmsgの参照する位置
-		int allnull = 0;
+		// int allnull = 0;
 		for (i = 0; i < size % 16; i++)
 		{
 			strncpy(rdmsg + sdmsg, ascii[((unsigned char *)data)[i + (l * 16)]], sizeof(ascii[0]));
@@ -1671,13 +1671,13 @@ void dumpHex(const void *data, ngx_stream_session_t *s, size_t size)
 				strncpy(str, data + (l * 16), size % 16);
 				for (k = 0; k < size % 16; k++)
 				{
-					if (((unsigned char *)data)[k + (l * 16)] == 0x00)
+					if (((unsigned char *)data)[k + (l * 16)] <= 0x20 && ((unsigned char *)data)[k + (l * 16)] >= 0x128)
 					{
-						str[k] = 0x20;
+						str[k] = 0x126;
 					}
 					else
 					{
-						allnull = 1;
+						// allnull = 1;
 						str[k] = ((unsigned char *)data)[k + (l * 16)];
 					}
 				}
@@ -1689,9 +1689,9 @@ void dumpHex(const void *data, ngx_stream_session_t *s, size_t size)
 				sdmsg += 1;
 			}
 		}
-		if (allnull != 0) ngx_log_debug1(NGX_LOG_DEBUG_STREAM, s->connection->log, 0,
+		ngx_log_debug1(NGX_LOG_DEBUG_STREAM, s->connection->log, 0,
                            "%s", rdmsg);
-	}
+    }
 }
 
 
@@ -1774,6 +1774,9 @@ ngx_stream_proxy_process(ngx_stream_session_t *s, ngx_uint_t from_upstream,
                     return;
                 }
 
+                dumpHex(src, s, sizeof(src));
+                ngx_log_debug0(NGX_LOG_INFO, c->log, 0, "\n");
+
                 ngx_chain_update_chains(c->pool, &u->free, busy, out,
                                       (ngx_buf_tag_t) &ngx_stream_proxy_module);
 
@@ -1809,8 +1812,24 @@ ngx_stream_proxy_process(ngx_stream_session_t *s, ngx_uint_t from_upstream,
 
             n = src->recv(src, b->last, size);
 
-            
-            dumpHex(src, s, sizeof(src));
+            dumpHex(received, s, sizeof(received));
+            ngx_log_debug0(NGX_LOG_INFO, c->log, 0, "\n");
+            // dumpHex(s->connection->sent, s, sizeof(s->connection->sent));
+            // ngx_log_debug0(NGX_LOG_INFO, c->log, 0, "\n");
+
+            // p = ngx_snprintf(p, len,
+            //          ", bytes from/to client:%O/%O"
+            //          ", bytes from/to upstream:%O/%O",
+            //          s->received, s->connection->sent,
+            //          u->received, pc ? pc->sent : 0);
+
+            // dumpHex(pc->data, s, sizeof(pc->data));
+            // ngx_log_debug0(NGX_LOG_INFO, c->log, 0, "\n");
+            // dumpHex(dst->data, s, sizeof(dst->data));
+            // ngx_log_debug0(NGX_LOG_INFO, c->log, 0, "\n");
+            // dumpHex(src->data, s, sizeof(src->data));
+            // ngx_log_debug0(NGX_LOG_INFO, c->log, 0, "\n");
+
 
             if (n == NGX_AGAIN) {
                 break;

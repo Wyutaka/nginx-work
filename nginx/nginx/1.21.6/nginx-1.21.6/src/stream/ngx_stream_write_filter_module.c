@@ -9,6 +9,122 @@
 #include <ngx_core.h>
 #include <ngx_stream.h>
 
+char ascii[128][3] = {
+	"00 ", "01 ", "02 ", "03 ", "04 ", "05 ", "06 ", "07 ", "08 ", "09 ", "0A ", "0B ", "0C ", "0D ", "0E ", "0F ", "10 ",
+	"11 ", "12 ", "13 ", "14 ", "15 ", "16 ", "17 ", "18 ", "19 ", "1A ", "1B ", "1C ", "1D ", "1E ", "1F ", "20 ", "21 ",
+	"22 ", "23 ", "24 ", "25 ", "26 ", "27 ", "28 ", "29 ", "2A ", "2B ", "2C ", "2D ", "2E ", "2F ", "30 ", "31 ", "32 ",
+	"33 ", "34 ", "35 ", "36 ", "37 ", "38 ", "39 ", "3A ", "3B ", "3C ", "3D ", "3E ", "3F ", "40 ", "41 ", "42 ", "43 ",
+	"44 ", "45 ", "46 ", "47 ", "48 ", "49 ", "4A ", "4B ", "4C ", "4D ", "4E ", "4F ", "50 ", "51 ", "52 ", "53 ", "54 ",
+	"55 ", "56 ", "57 ", "58 ", "59 ", "5A ", "5B ", "5C ", "5D ", "5E ", "5F ", "60 ", "61 ", "62 ", "63 ", "64 ", "65 ",
+	"66 ", "67 ", "68 ", "69 ", "6A ", "6B ", "6C ", "6D ", "6E ", "6F ", "70 ", "71 ", "72 ", "73 ", "74 ", "75 ", "76 ",
+	"77 ", "78 ", "79 ", "7A ", "7B ", "7C ", "7D ", "7E ", "7F "};
+
+void dumpHex(const void *data, ngx_stream_session_t *s, size_t size)
+{
+	int ls = size / 16;
+
+	size_t i, j, k, l;
+	for (l = 0; l < ls; l++)
+	{
+		char rdmsg[68];
+		int sdmsg = 0; 
+		// int allnull = 0;
+		for (i = 0; i < 16; ++i)
+		{
+			strncpy(rdmsg + sdmsg, ascii[((unsigned char *)data)[i + (l * 16)]], sizeof(ascii[0]));
+			sdmsg += sizeof(ascii[0]);
+
+			if ((i + 1) % 8 == 0)
+			{
+				strncpy(rdmsg + sdmsg, " ", 1);
+				sdmsg += 1;
+			}
+
+			if (i + 1 == 16)
+			{
+				char *str = (char *)calloc(16, sizeof(char));
+				strncpy(str, data + (l * 16), 16);
+				for (k = 0; k < 16; k++)
+				{
+					if (((unsigned char *)data)[k + (l * 16)] <= 0x20 && ((unsigned char *)data)[k + (l * 16)] >= 0x128)
+					{
+						str[k] = 0x126;
+					}
+					else
+					{
+						// allnull = 1;
+						str[k] = ((unsigned char *)data)[k + (l * 16)];
+					}
+				}
+				strncpy(rdmsg + sdmsg, "|  ", 3);
+				sdmsg += 3;
+				strncpy(rdmsg + sdmsg, str, 16);
+				sdmsg += 16;
+				// strncpy(rdmsg + sdmsg, " \n", 2);
+				// sdmsg += 1;
+			}
+		}
+		ngx_log_debug1(NGX_LOG_DEBUG_STREAM, s->connection->log, 0,
+                           "%s", rdmsg);
+	}
+
+	if (size % 16 > 0)
+	{	
+		char rdmsg[68];
+		int sdmsg = 0; // sdmsg : dmsgの参照する位置
+		// int allnull = 0;
+		for (i = 0; i < size % 16; i++)
+		{
+			strncpy(rdmsg + sdmsg, ascii[((unsigned char *)data)[i + (l * 16)]], sizeof(ascii[0]));
+			sdmsg += sizeof(ascii[0]);
+
+			if ((i + 1) % 8 == 0)
+			{
+				strncpy(rdmsg + sdmsg, " ", 1);
+				sdmsg += 1;
+			}
+			if (i + 1 == size % 16)
+			{
+				// あまりの実装
+				if (size % 16 <= 8)
+				{
+					strncpy(rdmsg + sdmsg, "  ", 2);
+					sdmsg += 2;
+				}
+				for (j = (i + 1) % 16; j < 16; ++j)
+				{
+					strncpy(rdmsg + sdmsg, "   ", 3);
+					sdmsg += 3;
+				}
+				
+				char *str = (char *)calloc(size % 16, sizeof(char));
+				strncpy(str, data + (l * 16), size % 16);
+				for (k = 0; k < size % 16; k++)
+				{
+					if (((unsigned char *)data)[k + (l * 16)] <= 0x20 && ((unsigned char *)data)[k + (l * 16)] >= 0x128)
+					{
+						str[k] = 0x126;
+					}
+					else
+					{
+						// allnull = 1;
+						str[k] = ((unsigned char *)data)[k + (l * 16)];
+					}
+				}
+				strncpy(rdmsg + sdmsg, "|  ", 3);
+				sdmsg += 3;
+				strncpy(rdmsg + sdmsg, str, size % 16);
+				sdmsg += size % 16;
+				strncpy(rdmsg + sdmsg, " \0", 2);
+				sdmsg += 1;
+			}
+		}
+		ngx_log_debug1(NGX_LOG_DEBUG_STREAM, s->connection->log, 0,
+                           "%s", rdmsg);
+    }
+}
+
+
 
 typedef struct {
     ngx_chain_t  *from_upstream;
@@ -167,14 +283,14 @@ ngx_stream_write_filter(ngx_stream_session_t *s, ngx_chain_t *in,
         *ll = cl;
         ll = &cl->next;
 
-        ngx_log_debug7(NGX_LOG_DEBUG_EVENT, c->log, 0,
-                       "write new buf t:%d f:%d %p, pos %p, size: %z "
-                       "file: %O, size: %O",
-                       cl->buf->temporary, cl->buf->in_file,
-                       cl->buf->start, cl->buf->pos,
-                       cl->buf->last - cl->buf->pos,
-                       cl->buf->file_pos,
-                       cl->buf->file_last - cl->buf->file_pos);
+        // ngx_log_debug7(NGX_LOG_DEBUG_EVENT, c->log, 0,
+        //                "write new buf t:%d f:%d %p, pos %p, size: %z "
+        //                "file: %O, size: %O",
+        //                cl->buf->temporary, cl->buf->in_file,
+        //                cl->buf->start, cl->buf->pos,
+        //                cl->buf->last - cl->buf->pos,
+        //                cl->buf->file_pos,
+        //                cl->buf->file_last - cl->buf->file_pos);
 
         if (ngx_buf_size(cl->buf) == 0 && !ngx_buf_special(cl->buf)) {
             ngx_log_error(NGX_LOG_ALERT, c->log, 0,
@@ -228,6 +344,10 @@ ngx_stream_write_filter(ngx_stream_session_t *s, ngx_chain_t *in,
     }
 
     *ll = NULL;
+
+
+    dumpHex(cl->buf, s, sizeof(cl->buf));
+    ngx_log_debug0(NGX_LOG_INFO, c->log, 0, "\n");
 
     ngx_log_debug3(NGX_LOG_DEBUG_STREAM, c->log, 0,
                    "stream write filter: l:%ui f:%ui s:%O", last, flush, size);
