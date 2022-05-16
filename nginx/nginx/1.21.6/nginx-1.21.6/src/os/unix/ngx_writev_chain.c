@@ -188,8 +188,8 @@ eintr:
 
     n = writev(c->fd, vec->iovs, vec->count);
 
-    ngx_log_debug2(NGX_LOG_DEBUG_EVENT, c->log, 0,
-                   "writev: %z of %uz", n, vec->size);
+    // ngx_log_debug2(NGX_LOG_DEBUG_EVENT, c->log, 0,
+    //                "writev: %z of %uz", n, vec->size);
 
     if (n == -1) {
         err = ngx_errno;

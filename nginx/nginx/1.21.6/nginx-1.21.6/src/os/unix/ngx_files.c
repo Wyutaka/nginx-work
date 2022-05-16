@@ -394,8 +394,8 @@ ngx_writev_file(ngx_file_t *file, ngx_iovec_t *vec, off_t offset)
     ssize_t    n;
     ngx_err_t  err;
 
-    ngx_log_debug3(NGX_LOG_DEBUG_CORE, file->log, 0,
-                   "writev: %d, %uz, %O", file->fd, vec->size, offset);
+    // ngx_log_debug3(NGX_LOG_DEBUG_CORE, file->log, 0,
+    //                "writev: %d, %uz, %O", file->fd, vec->size, offset);
 
 #if (NGX_HAVE_PWRITEV)
 

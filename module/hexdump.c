@@ -30,7 +30,7 @@ int main(void)
 {
 	char *hoges;
 	// char str1[ARRAY_SIZE] = "abc";
-	char str2[] = {0x38, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,0x75, 0x63, 0x61, 0x74, 0x00, 0x75, 0x63, 0x61, 0x74, 0x00};
+	char str2[] = {0x38, 0x00, 0x01, 0x00, 0x00,0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  0x00, 0x00, 0x00, 0x00, 0x00,  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x75, 0x63, 0x61, 0x74, 0x00, 0x75, 0x63, 0x61, 0x74, 0x00};
 
 	hoges = (char *)calloc(ARRAY_SIZE, sizeof(char));
 
@@ -52,7 +52,9 @@ int main(void)
 
 	dmsg = (char *)calloc(sizeof(str2), sizeof(char) * 5);
 
-	DumpHex(hoges2, sizeof(str2));
+	printf("size is :%zu\n", sizeof(hoges2));
+
+	DumpHex(hoges2, strlen(hoges2));
 	// printf("%s", dmsg);
 
 	// for ( i = 0; i < 128; i++)
@@ -111,7 +113,7 @@ void DumpHex(const void *data, size_t size)
 				sdmsg += 1;
 			}
 		}
-		if (allnull != 0) printf("%s", rdmsg);
+		printf("%s", rdmsg);
 	}
 
 	if (size % 16 > 0)
@@ -153,6 +155,7 @@ void DumpHex(const void *data, size_t size)
 					}
 					else
 					{
+						allnull = 1;
 						str[k] = ((unsigned char *)data)[k + (l * 16)];
 					}
 				}
@@ -160,7 +163,7 @@ void DumpHex(const void *data, size_t size)
 				sdmsg += 3;
 				strncpy(rdmsg + sdmsg, str, size % 16);
 				sdmsg += size % 16;
-				strncpy(rdmsg + sdmsg, " \n\0", 3);
+				strncpy(rdmsg + sdmsg, " \n\0", 1);
 				sdmsg += 1;
 			}
 		}

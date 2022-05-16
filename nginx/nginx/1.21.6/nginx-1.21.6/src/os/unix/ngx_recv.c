@@ -22,9 +22,9 @@ ngx_unix_recv(ngx_connection_t *c, u_char *buf, size_t size)
 #if (NGX_HAVE_KQUEUE)
 
     if (ngx_event_flags & NGX_USE_KQUEUE_EVENT) {
-        ngx_log_debug3(NGX_LOG_DEBUG_EVENT, c->log, 0,
-                       "recv: eof:%d, avail:%d, err:%d",
-                       rev->pending_eof, rev->available, rev->kq_errno);
+        // ngx_log_debug3(NGX_LOG_DEBUG_EVENT, c->log, 0,
+        //                "recv: eof:%d, avail:%d, err:%d",
+        //                rev->pending_eof, rev->available, rev->kq_errno);
 
         if (rev->available == 0) {
             if (rev->pending_eof) {
@@ -53,9 +53,9 @@ ngx_unix_recv(ngx_connection_t *c, u_char *buf, size_t size)
 #if (NGX_HAVE_EPOLLRDHUP)
 
     if (ngx_event_flags & NGX_USE_EPOLL_EVENT) {
-        ngx_log_debug2(NGX_LOG_DEBUG_EVENT, c->log, 0,
-                       "recv: eof:%d, avail:%d",
-                       rev->pending_eof, rev->available);
+        // ngx_log_debug2(NGX_LOG_DEBUG_EVENT, c->log, 0,
+        //                "recv: eof:%d, avail:%d",
+        //                rev->pending_eof, rev->available);
 
         if (rev->available == 0 && !rev->pending_eof) {
             rev->ready = 0;

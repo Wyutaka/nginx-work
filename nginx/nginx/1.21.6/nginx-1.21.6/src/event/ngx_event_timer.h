@@ -66,9 +66,9 @@ ngx_event_add_timer(ngx_event_t *ev, ngx_msec_t timer)
         diff = (ngx_msec_int_t) (key - ev->timer.key);
 
         if (ngx_abs(diff) < NGX_TIMER_LAZY_DELAY) {
-            ngx_log_debug3(NGX_LOG_DEBUG_EVENT, ev->log, 0,
-                           "event timer: %d, old: %M, new: %M",
-                            ngx_event_ident(ev->data), ev->timer.key, key);
+            // ngx_log_debug3(NGX_LOG_DEBUG_EVENT, ev->log, 0,
+            //                "event timer: %d, old: %M, new: %M",
+            //                 ngx_event_ident(ev->data), ev->timer.key, key);
             return;
         }
 
