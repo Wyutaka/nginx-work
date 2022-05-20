@@ -1,6 +1,6 @@
 
 CC =	cc
-CFLAGS =  -pipe  -O -W -g 
+CFLAGS = -std=c99 -pipe -O -W -g 
 CPP =	cc -E
 LINK =	$(CC)
 

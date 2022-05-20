@@ -30,7 +30,11 @@ int main(void)
 {
 	char *hoges;
 	// char str1[ARRAY_SIZE] = "abc";
-	char str2[] = {0x38, 0x00, 0x01, 0x00, 0x00,0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  0x00, 0x00, 0x00, 0x00, 0x00,  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x75, 0x63, 0x61, 0x74, 0x00, 0x75, 0x63, 0x61, 0x74, 0x00};
+	char str2[] = {0x00, 0x00, 0x00, 0x5B, 0x00,0x03, 0x00, 0x00, 
+				0x75, 0x73, 0x65, 0x72,  0x00, 0x79, 0x75, 0x67, 
+
+				0x61, 0x62, 0x79,  0x74, 0x65, 0x00, 0x64, 0x61,  
+				0x74, 0x61, 0x62, 0x61, 0x73, 0x65, 0x00, 0x79, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x75, 0x63, 0x61, 0x74, 0x00, 0x75, 0x63, 0x61, 0x74, 0x00};
 
 	hoges = (char *)calloc(ARRAY_SIZE, sizeof(char));
 
@@ -52,9 +56,9 @@ int main(void)
 
 	dmsg = (char *)calloc(sizeof(str2), sizeof(char) * 5);
 
-	printf("size is :%zu\n", sizeof(hoges2));
+	// printf("size is :%zu\n", sizeof(hoges2));
 
-	DumpHex(hoges2, strlen(hoges2));
+	DumpHex(hoges2, 100);
 	// printf("%s", dmsg);
 
 	// for ( i = 0; i < 128; i++)
@@ -73,12 +77,12 @@ void DumpHex(const void *data, size_t size)
 	int ls = size / 16;
 
 	size_t i, j, k, l;
-	for (l = 0; l < ls; l++)
+	for (int l = 0; l < ls; l++)
 	{
 		char rdmsg[68];
 		int sdmsg = 0; 
 		int allnull = 0;
-		for (i = 0; i < 16; ++i)
+		for (int i = 0; i < 16; ++i)
 		{
 			strncpy(rdmsg + sdmsg, ascii[((unsigned char *)data)[i + (l * 16)]], sizeof(ascii[0]));
 			sdmsg += sizeof(ascii[0]);
@@ -93,7 +97,7 @@ void DumpHex(const void *data, size_t size)
 			{
 				char *str = (char *)calloc(16, sizeof(char));
 				strncpy(str, data + (l * 16), 16);
-				for (k = 0; k < 16; k++)
+				for (int k = 0; k < 16; k++)
 				{
 					if (((unsigned char *)data)[k + (l * 16)] == 0x00)
 					{
@@ -121,7 +125,7 @@ void DumpHex(const void *data, size_t size)
 		char rdmsg[68];
 		int sdmsg = 0; // sdmsg : dmsgの参照する位置
 		int allnull = 0;
-		for (i = 0; i < size % 16; i++)
+		for (int i = 0; i < size % 16; i++)
 		{
 			strncpy(rdmsg + sdmsg, ascii[((unsigned char *)data)[i + (l * 16)]], sizeof(ascii[0]));
 			sdmsg += sizeof(ascii[0]);
@@ -139,7 +143,7 @@ void DumpHex(const void *data, size_t size)
 					strncpy(rdmsg + sdmsg, "  ", 2);
 					sdmsg += 2;
 				}
-				for (j = (i + 1) % 16; j < 16; ++j)
+				for (int j = (i + 1) % 16; j < 16; ++j)
 				{
 					strncpy(rdmsg + sdmsg, "   ", 3);
 					sdmsg += 3;
@@ -147,7 +151,7 @@ void DumpHex(const void *data, size_t size)
 				
 				char *str = (char *)calloc(size % 16, sizeof(char));
 				strncpy(str, data + (l * 16), size % 16);
-				for (k = 0; k < size % 16; k++)
+				for (int k = 0; k < size % 16; k++)
 				{
 					if (((unsigned char *)data)[k + (l * 16)] == 0x00)
 					{

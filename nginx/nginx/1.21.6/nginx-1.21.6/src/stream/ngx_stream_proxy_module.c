@@ -1616,7 +1616,7 @@ void dumpHex(const void *data, ngx_stream_session_t *s, size_t size)
 				strncpy(str, data + (l * 16), 16);
 				for (k = 0; k < 16; k++)
 				{
-					if (((unsigned char *)data)[k + (l * 16)] <= 0x20 && ((unsigned char *)data)[k + (l * 16)] >= 0x128)
+					if (((unsigned char *)data)[k + (l * 16)] <= 0x20 && ((unsigned char *)data)[k + (l * 16)] >= 0x127)
 					{
 						str[k] = 0x20;
 					}
@@ -1817,7 +1817,11 @@ ngx_stream_proxy_process(ngx_stream_session_t *s, ngx_uint_t from_upstream,
             ngx_log_debug0(NGX_LOG_INFO, c->log, 0, "\n\n");
             // dumpHex(u->upstream_buf.start, s, 200);
             int bs = u->downstream_buf.end - u->downstream_buf.start;
-            dumpHex(u->downstream_buf.start , s, sizeof(char) * bs);
+            // dumpHex(u->downstream_buf.start , s, 100); // data
+
+            dumpHex(u->peer.data , s, 100);
+            ngx_log_debug0(NGX_LOG_INFO, c->log, 0, "\n");
+            dumpHex(u->peer.connection->data , s, 100);
             ngx_log_debug0(NGX_LOG_INFO, c->log, 0, "\n\n");
             // dumpHex(s->connection->sent, s, sizeof(s->connection->sent));
             // ngx_log_debug0(NGX_LOG_INFO, c->log, 0, "\n");
@@ -1834,6 +1838,19 @@ ngx_stream_proxy_process(ngx_stream_session_t *s, ngx_uint_t from_upstream,
             // ngx_log_debug0(NGX_LOG_INFO, c->log, 0, "\n");
             // dumpHex(src->data, s, 100);
             // ngx_log_debug0(NGX_LOG_INFO, c->log, 0, "\n");
+            
+            // struct ngx_peer_connection_s
+            // ngx_connection_t                *connection;
+            // struct sockaddr                 *sockaddr;
+            // socklen_t                        socklen;
+            // ngx_str_t                       *name;
+            // ngx_uint_t                       tries;
+            // ngx_msec_t                       start_time;
+            // ngx_event_get_peer_pt            get;
+            // ngx_event_free_peer_pt           free;
+            // ngx_event_notify_peer_pt         notify;
+            // void                            *data;
+            
 
 
             if (n == NGX_AGAIN) {
