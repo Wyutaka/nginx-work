@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "ngx_stream.h": "c"
+        "ngx_stream.h": "c",
+        "ngx_stream_variables.h": "c"
     }
 }
