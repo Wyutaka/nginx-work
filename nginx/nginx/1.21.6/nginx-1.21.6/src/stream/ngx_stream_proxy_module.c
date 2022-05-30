@@ -457,6 +457,8 @@ ngx_stream_proxy_handler(ngx_stream_session_t *s)
     u->downstream_buf.last = p;
 
     if (c->read->ready) {
+        ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
+                    "proxy_ready... \n");
         ngx_post_event(c->read, &ngx_posted_events);
     }
 
@@ -1329,7 +1331,7 @@ ngx_stream_proxy_downstream_handler(ngx_event_t *ev)
                    "proxy_process_downstream"); // 1回呼ばれている
     // return; // 意図的にkill
                 
-    dumpHex(u->downstream_buf.start , s, 100); // data 3回呼ばれてる…？
+    dumpHex(u->downstream_buf.start , s, u->downstream_buf.end - u->downstream_buf.start); // data 3回呼ばれてる…？
     ngx_stream_proxy_process_connection(ev, ev->write);
 }
 
@@ -1346,9 +1348,6 @@ ngx_stream_proxy_resolve_handler(ngx_resolver_ctx_t *ctx)
 
     u = s->upstream;
     ur = u->resolved;
-
-    ngx_log_debug0(NGX_LOG_DEBUG_STREAM, s->connection->log, 0,
-                   "stream upstream resolve");
 
     if (ctx->state) {
         ngx_log_error(NGX_LOG_ERR, s->connection->log, 0,
@@ -1410,14 +1409,16 @@ ngx_stream_proxy_upstream_handler(ngx_event_t *ev)
     ngx_stream_session_t            *s;
     ngx_stream_upstream_t           *u;
     c = ev->data;
-    ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
-                   "proxy_process_upstream"); // 2回よばれてる
     
     s = c->data;
     u = s->upstream;
     
     // return; // 意図的にkill
-    dumpHex(u->downstream_buf.start , s, 100); // data 3回呼ばれてる…？
+    
+    // ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,"proxy_process_downstream: addr"); 
+    // dumpHex(u->downstream_buf.start , s, u->downstream_buf.end - u->downstream_buf.start); 
+    ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,"proxy_process_upstream"); 
+    dumpHex(u->upstream_buf.start , s, u->upstream_buf.end - u->upstream_buf.start);
     ngx_stream_proxy_process_connection(ev, !ev->write);
 }
 
@@ -1530,12 +1531,6 @@ ngx_stream_proxy_process_connection(ngx_event_t *ev, ngx_uint_t from_upstream)
     if (from_upstream && !u->connected) {
         return;
     }
-
-    
-        // dumpHex(u->upstream_buf.start, s, 200);
-        // int bs = u->downstream_buf.end - u->downstream_buf.start;
-        ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0, "ngx_proxy_proxy_process_call in proxy_process_connection\n");
-        // dumpHex(u->downstream_buf.start , s, 100); // data 3回呼ばれてる…？
     ngx_stream_proxy_process(s, from_upstream, ev->write);
 }
 
@@ -1661,7 +1656,7 @@ void dumpHex(const void *data, ngx_stream_session_t *s, size_t size)
 						str[k] = 0x2E;
 					}
 				}
-				strncpy(rdmsg + sdmsg, "|  ", 3);
+				strncpy(rdmsg + sdmsg, "|  ", 3); 
 				sdmsg += 3;
 				strncpy(rdmsg + sdmsg, str, 16);
 				sdmsg += 16;
@@ -1669,16 +1664,17 @@ void dumpHex(const void *data, ngx_stream_session_t *s, size_t size)
 		}
 		if (allnull == 1) ngx_log_debug2(NGX_LOG_DEBUG_STREAM, s->connection->log, 0,
                            "%04d | %s", l, rdmsg);
+        allnull = 0;
 	}
 
-	if (size % 16 > 0)
+	if (size % 16 > 0) // 1行あまり
 	{	
 		char rdmsg[68];
 		int sdmsg = 0; // sdmsg : dmsgの参照する位置
 		int allnull = 0;
 		for (int i = 0; i < size % 16; i++)
 		{
-			strncpy(rdmsg + sdmsg, ascii[((unsigned char *)data)[i + (l * 16)]], sizeof(ascii[0]));
+			strncpy(rdmsg + sdmsg, ascii[((unsigned char *)data)[i + (l * 16)]], sizeof(ascii[0])); // 16清のコピー　
 			sdmsg += sizeof(ascii[0]);
 
 			if ((i + 1) % 8 == 0)
@@ -1714,7 +1710,7 @@ void dumpHex(const void *data, ngx_stream_session_t *s, size_t size)
 						str[k] = 0x2E;
 					}
 				}
-				strncpy(rdmsg + sdmsg, "|  ", 3);
+				strncpy(rdmsg + sdmsg, "|  ", 3); // このあたり以前からバグってそう(| が出ていない)
 				sdmsg += 3;
 				strncpy(rdmsg + sdmsg, str, size % 16);
 				sdmsg += size % 16;
@@ -1800,7 +1796,6 @@ ngx_stream_proxy_process(ngx_stream_session_t *s, ngx_uint_t from_upstream,
         if (do_write && dst) {
 
             if (*out || *busy || dst->buffered) {
-                ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0, "ngx_proxy_proxy_process dest do write\n");
                 c->log->action = send_action;
 
                 rc = ngx_stream_top_filter(s, *out, from_upstream);
@@ -1809,9 +1804,6 @@ ngx_stream_proxy_process(ngx_stream_session_t *s, ngx_uint_t from_upstream,
                     ngx_stream_proxy_finalize(s, NGX_STREAM_OK);
                     return;
                 }
-
-                // dumpHex(src, s, 100);
-                // ngx_log_debug0(NGX_LOG_INFO, c->log, 0, "\n");
 
                 ngx_chain_update_chains(c->pool, &u->free, busy, out,
                                       (ngx_buf_tag_t) &ngx_stream_proxy_module);
@@ -1847,12 +1839,6 @@ ngx_stream_proxy_process(ngx_stream_session_t *s, ngx_uint_t from_upstream,
             c->log->action = recv_action;
 
             n = src->recv(src, b->last, size);
-            ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0, "hoge\n\n");
-
-            // ngx_log_debug0(NGX_LOG_INFO, c->log, 0, "\n\n");
-            // dumpHex(u->upstream_buf.start, s, 200);
-            // int bs = u->downstream_buf.end - u->downstream_buf.start;
-            // dumpHex(u->downstream_buf.start , s, 100); // data
 
             if (n == NGX_AGAIN) {
                 break;
@@ -1910,8 +1896,6 @@ ngx_stream_proxy_process(ngx_stream_session_t *s, ngx_uint_t from_upstream,
 
         break;
     }
-    
-    ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0, "ngx_proxy_proxy_process for end\n");
 
     c->log->action = "proxying connection";
 
@@ -2007,10 +1991,6 @@ ngx_stream_proxy_test_finalize(ngx_stream_session_t *s,
                       u->requests, u->responses,
                       s->received, c->sent, u->received, pc ? pc->sent : 0);
 
-
-        
-        // dumpHex(s->received, c->log, 100);
-        // dumpHex(c->sent, c->log, 100);
 
         c->log->handler = handler;
 
