@@ -58,7 +58,7 @@ int main(void)
 
 	// printf("size is :%zu\n", sizeof(hoges2));
 
-	DumpHex(hoges2, 100);
+	DumpHex(hoges2, sizeof());
 	// printf("%s", dmsg);
 
 	// for ( i = 0; i < 128; i++)
@@ -171,6 +171,6 @@ void DumpHex(const void *data, size_t size)
 				sdmsg += 1;
 			}
 		}
-		if (allnull != 0) printf("%s", rdmsg);
+		// if (allnull != 0) printf("%s", rdmsg);
 	}
 }
