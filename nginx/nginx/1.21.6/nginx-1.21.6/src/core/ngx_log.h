@@ -88,6 +88,9 @@ struct ngx_log_s {
 void ngx_log_error_core(ngx_uint_t level, ngx_log_t *log, ngx_err_t err,
     const char *fmt, ...);
 
+void ngx_log_error_core(unsigned long level, ngx_log_t *log, int err,
+    const char *fmt, ...);
+
 #define ngx_log_debug(level, log, ...)                                        \
     if ((log)->log_level & level)                                             \
         ngx_log_error_core(NGX_LOG_DEBUG, log, __VA_ARGS__)
