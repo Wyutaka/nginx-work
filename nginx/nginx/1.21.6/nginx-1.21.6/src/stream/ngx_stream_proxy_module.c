@@ -91,6 +91,7 @@ static char *ngx_stream_proxy_pass(ngx_conf_t *cf, ngx_command_t *cmd,
     void *conf);
 static char *ngx_stream_proxy_bind(ngx_conf_t *cf, ngx_command_t *cmd,
     void *conf);
+void dumpHex(const void *data, ngx_stream_session_t *s, size_t size);
 
 #if (NGX_STREAM_SSL)
 
@@ -1329,7 +1330,7 @@ ngx_stream_proxy_downstream_handler(ngx_event_t *ev)
     c = ev->data;
     s = c->data;
     u = s->upstream;
-    
+
     ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
                    "proxy_process_downstream"); // 1回呼ばれている
     // return; // 意図的にkill

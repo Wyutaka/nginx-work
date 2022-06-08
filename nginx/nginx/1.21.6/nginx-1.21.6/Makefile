@@ -1,8 +1,10 @@
 
-CC =	g++
-CFLAGS = -std=c++17 -pipe -O -W -g 
+CC =	gcc
+CFLAGS = -std=c99 -pipe -O -W -g 
 CPP =	cc -E
-LINK =	$(CC)
+CXX = g++
+LINK =	$(CXX)
+CXXFLAGS = -std=c++17 -W -g -fpermissive
 
 ALL_INCS = -I src/core \
 	-I src/event \
@@ -1258,7 +1260,7 @@ objs/src/stream/ngx_stream.o:	$(CORE_DEPS) $(STREAM_DEPS) \
 
 objs/src/stream/c++test.o:	$(CORE_DEPS) $(STREAM_DEPS) \
 	src/stream/c++test.cpp
-	$(CC) -c $(CFLAGS) $(CORE_INCS) $(STREAM_INCS) \
+	$(CXX) -c $(CXXFLAGS) $(CORE_INCS) $(STREAM_INCS) \
 		-o objs/src/stream/c++test.o \
 		src/stream/c++test.cpp
 
@@ -1296,7 +1298,7 @@ objs/src/stream/ngx_stream_log_module.o:	$(CORE_DEPS) $(STREAM_DEPS) \
 		-o objs/src/stream/ngx_stream_log_module.o \
 		src/stream/ngx_stream_log_module.c
 
-objs/src/stream/ngx_stream_proxy_module.o:	$(CORE_DEPS) $(STREAM_DEPS) \
+objs/src/stream/ngx_stream_proxy_module.o:	$(CORE_DEPS) $(STREAM_DEPS) objs/src/stream/c++test.o \
 	src/stream/ngx_stream_proxy_module.c
 	$(CC) -c $(CFLAGS) $(CORE_INCS) $(STREAM_INCS) \
 		-o objs/src/stream/ngx_stream_proxy_module.o \
