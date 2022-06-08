@@ -194,9 +194,14 @@ ngx_stream_init_connection(ngx_connection_t *c)
     }
 
     if (ngx_use_accept_mutex) {
+        ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
+                    "ngx_stream_proxy_init_session post \n");
         ngx_post_event(rev, &ngx_posted_events);
         return;
     }
+
+    ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
+                "ngx_stream_proxy_init_session \n");
 
     rev->handler(rev);
 }

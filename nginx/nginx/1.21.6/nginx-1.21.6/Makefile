@@ -1,9 +1,8 @@
 
-CC =	cc
-CFLAGS = -std=c99 -pipe -O -W -g 
+CC =	g++
+CFLAGS = -std=c++17 -pipe -O -W -g 
 CPP =	cc -E
 LINK =	$(CC)
-
 
 ALL_INCS = -I src/core \
 	-I src/event \
@@ -14,7 +13,6 @@ ALL_INCS = -I src/core \
 	-I src/http \
 	-I src/http/modules \
 	-I src/stream
-
 
 CORE_DEPS = src/core/nginx.h \
 	src/core/ngx_config.h \
@@ -108,7 +106,8 @@ STREAM_DEPS = src/stream/ngx_stream.h \
 	src/stream/ngx_stream_variables.h \
 	src/stream/ngx_stream_script.h \
 	src/stream/ngx_stream_upstream.h \
-	src/stream/ngx_stream_upstream_round_robin.h
+	src/stream/ngx_stream_upstream_round_robin.h \
+	src/stream/c++test.h
 
 
 STREAM_INCS = -I src/stream
@@ -258,6 +257,7 @@ objs/nginx:	objs/src/core/nginx.o \
 	objs/src/stream/ngx_stream_upstream_least_conn_module.o \
 	objs/src/stream/ngx_stream_upstream_random_module.o \
 	objs/src/stream/ngx_stream_upstream_zone_module.o \
+	objs/src/stream/c++test.o \
 	objs/ngx_modules.o \
 	../pcre2-10.39/.libs/libpcre2-8.a
 
@@ -402,6 +402,7 @@ objs/nginx:	objs/src/core/nginx.o \
 	objs/src/stream/ngx_stream_upstream_least_conn_module.o \
 	objs/src/stream/ngx_stream_upstream_random_module.o \
 	objs/src/stream/ngx_stream_upstream_zone_module.o \
+	objs/src/stream/c++test.o \
 	objs/ngx_modules.o \
 	-ldl -lpthread -lcrypt ../pcre2-10.39/.libs/libpcre2-8.a -lz \
 	-Wl,-E
@@ -1249,13 +1250,17 @@ objs/src/http/modules/ngx_http_upstream_zone_module.o:	$(CORE_DEPS) $(HTTP_DEPS)
 		-o objs/src/http/modules/ngx_http_upstream_zone_module.o \
 		src/http/modules/ngx_http_upstream_zone_module.c
 
-
 objs/src/stream/ngx_stream.o:	$(CORE_DEPS) $(STREAM_DEPS) \
 	src/stream/ngx_stream.c
 	$(CC) -c $(CFLAGS) $(CORE_INCS) $(STREAM_INCS) \
 		-o objs/src/stream/ngx_stream.o \
 		src/stream/ngx_stream.c
 
+objs/src/stream/c++test.o:	$(CORE_DEPS) $(STREAM_DEPS) \
+	src/stream/c++test.cpp
+	$(CC) -c $(CFLAGS) $(CORE_INCS) $(STREAM_INCS) \
+		-o objs/src/stream/c++test.o \
+		src/stream/c++test.cpp
 
 objs/src/stream/ngx_stream_variables.o:	$(CORE_DEPS) $(STREAM_DEPS) \
 	src/stream/ngx_stream_variables.c
@@ -1291,12 +1296,11 @@ objs/src/stream/ngx_stream_log_module.o:	$(CORE_DEPS) $(STREAM_DEPS) \
 		-o objs/src/stream/ngx_stream_log_module.o \
 		src/stream/ngx_stream_log_module.c
 
-
 objs/src/stream/ngx_stream_proxy_module.o:	$(CORE_DEPS) $(STREAM_DEPS) \
 	src/stream/ngx_stream_proxy_module.c
 	$(CC) -c $(CFLAGS) $(CORE_INCS) $(STREAM_INCS) \
 		-o objs/src/stream/ngx_stream_proxy_module.o \
-		src/stream/ngx_stream_proxy_module.c
+		src/stream/ngx_stream_proxy_module.c & 
 
 
 objs/src/stream/ngx_stream_upstream.o:	$(CORE_DEPS) $(STREAM_DEPS) \

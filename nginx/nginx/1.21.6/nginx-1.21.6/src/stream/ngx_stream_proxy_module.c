@@ -8,6 +8,7 @@
 #include <ngx_config.h>
 #include <ngx_core.h>
 #include <ngx_stream.h>
+#include "c++test.h"
 
 
 typedef struct {
@@ -930,10 +931,12 @@ ngx_stream_proxy_init_upstream(ngx_stream_session_t *s)
 
     if (pc->read->ready) {
         ngx_post_event(pc->read, &ngx_posted_events);
+        ngx_log_debug0(NGX_LOG_DEBUG_STREAM, pc->log, 0,
+                    "ngx_stream_proxy_init_upstream \n");
     }
     
-    ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
-                    "ngx_stream_proxy_init_upstream \n");
+    // ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
+    //                 "ngx_stream_proxy_init_upstream \n");
 
     ngx_stream_proxy_process(s, 0, 1);
 }
@@ -1330,7 +1333,8 @@ ngx_stream_proxy_downstream_handler(ngx_event_t *ev)
     ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
                    "proxy_process_downstream"); // 1回呼ばれている
     // return; // 意図的にkill
-                
+
+    bridge_transaction_layer(ev);
     dumpHex(u->downstream_buf.start , s, u->downstream_buf.end - u->downstream_buf.start); // data 3回呼ばれてる…？
     ngx_stream_proxy_process_connection(ev, ev->write);
 }
@@ -1412,8 +1416,6 @@ ngx_stream_proxy_upstream_handler(ngx_event_t *ev)
     
     s = c->data;
     u = s->upstream;
-    
-    // return; // 意図的にkill
     
     // ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,"proxy_process_downstream: addr"); 
     // dumpHex(u->downstream_buf.start , s, u->downstream_buf.end - u->downstream_buf.start); 
