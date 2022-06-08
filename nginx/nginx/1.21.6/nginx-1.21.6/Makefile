@@ -1298,7 +1298,7 @@ objs/src/stream/ngx_stream_log_module.o:	$(CORE_DEPS) $(STREAM_DEPS) \
 		-o objs/src/stream/ngx_stream_log_module.o \
 		src/stream/ngx_stream_log_module.c
 
-objs/src/stream/ngx_stream_proxy_module.o:	$(CORE_DEPS) $(STREAM_DEPS) objs/src/stream/c++test.o \
+objs/src/stream/ngx_stream_proxy_module.o:	$(CORE_DEPS) $(STREAM_DEPS) \
 	src/stream/ngx_stream_proxy_module.c
 	$(CC) -c $(CFLAGS) $(CORE_INCS) $(STREAM_INCS) \
 		-o objs/src/stream/ngx_stream_proxy_module.o \

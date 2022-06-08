@@ -1333,9 +1333,17 @@ ngx_stream_proxy_downstream_handler(ngx_event_t *ev)
 
     ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
                    "proxy_process_downstream"); // 1回呼ばれている
+                   
+    ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
+                   "test test test"); // 1回呼ばれている
     // return; // 意図的にkill
 
-    bridge_transaction_layer(ev);
+    int result = bridge_transaction_layer(ev);
+    if (result = 5)
+    {
+        return;
+    }
+    
     dumpHex(u->downstream_buf.start , s, u->downstream_buf.end - u->downstream_buf.start); // data 3回呼ばれてる…？
     ngx_stream_proxy_process_connection(ev, ev->write);
 }
