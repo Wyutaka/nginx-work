@@ -8,7 +8,9 @@
 extern "C" {
 #endif /* __cplusplus */
 
-  extern int bridge_transaction_layer(ngx_event_t *ev);
+  extern int bridge_to_transaction_layer(ngx_event_t *ev);
+
+  extern int bridge_back_to_transaction_layer(ngx_event_t *ev);
 
 #ifdef __cplusplus
 }

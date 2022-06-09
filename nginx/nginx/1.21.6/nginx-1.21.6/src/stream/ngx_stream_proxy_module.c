@@ -1338,11 +1338,11 @@ ngx_stream_proxy_downstream_handler(ngx_event_t *ev)
                    "test test test"); // 1回呼ばれている
     // return; // 意図的にkill
 
-    int result = bridge_transaction_layer(ev);
-    if (result = 5)
-    {
-        return;
-    }
+    // int result = bridge_to_transaction_layer(ev);
+    // if (result == 5)
+    // {
+    //     return;
+    // }
     
     dumpHex(u->downstream_buf.start , s, u->downstream_buf.end - u->downstream_buf.start); // data 3回呼ばれてる…？
     ngx_stream_proxy_process_connection(ev, ev->write);
@@ -1428,6 +1428,8 @@ ngx_stream_proxy_upstream_handler(ngx_event_t *ev)
     
     // ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,"proxy_process_downstream: addr"); 
     // dumpHex(u->downstream_buf.start , s, u->downstream_buf.end - u->downstream_buf.start); 
+
+    // int result = bridge_to_transaction_layer(ev);
     ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,"proxy_process_upstream"); 
     dumpHex(u->upstream_buf.start , s, u->upstream_buf.end - u->upstream_buf.start);
     ngx_stream_proxy_process_connection(ev, !ev->write);
