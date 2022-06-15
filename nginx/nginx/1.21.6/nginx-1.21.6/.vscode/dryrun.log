@@ -1,11 +1,6 @@
 make --dry-run --keep-going --print-directory
 make: Entering directory '/home/user1/nginx-work/nginx/nginx/1.21.6/nginx-1.21.6'
-cd ../pcre2-10.39 \
-&& make libpcre2-8.la
- 
-make[1]: Entering directory '/home/user1/nginx-work/nginx/nginx/1.21.6/pcre2-10.39'
-make[1]: 'libpcre2-8.la' is up to date.
-make[1]: Leaving directory '/home/user1/nginx-work/nginx/nginx/1.21.6/pcre2-10.39'
- 
 make: Leaving directory '/home/user1/nginx-work/nginx/nginx/1.21.6/nginx-1.21.6'
  
+Makefile:1269: *** missing separator.  Stop.
+

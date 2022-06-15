@@ -1266,7 +1266,11 @@ objs/src/stream/ngx_stream.o:	$(CORE_DEPS) $(STREAM_DEPS) \
 
 objs/src/stream/c++test.o:	$(CORE_DEPS) $(STREAM_DEPS) \
 	src/stream/c++test.cpp
+<<<<<<< HEAD
 	$(GXX) -c $(GXXFLAGS) $(CORE_INCS) $(STREAM_INCS) \
+=======
+	$(CXX) -c $(CXXFLAGS) $(CORE_INCS) $(STREAM_INCS) \
+>>>>>>> 4b58b042ed770a9676e10132939c1a689f6daac4
 		-o objs/src/stream/c++test.o \
 		src/stream/c++test.cpp
 

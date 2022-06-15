@@ -91,6 +91,7 @@ static char *ngx_stream_proxy_pass(ngx_conf_t *cf, ngx_command_t *cmd,
     void *conf);
 static char *ngx_stream_proxy_bind(ngx_conf_t *cf, ngx_command_t *cmd,
     void *conf);
+void dumpHex(const void *data, ngx_stream_session_t *s, size_t size);
 
 #if (NGX_STREAM_SSL)
 
@@ -1329,9 +1330,12 @@ ngx_stream_proxy_downstream_handler(ngx_event_t *ev)
     c = ev->data;
     s = c->data;
     u = s->upstream;
-    
+
     ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
                    "proxy_process_downstream"); // 1回呼ばれている
+                   
+    ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
+                   "test test test"); // 1回呼ばれている
     // return; // 意図的にkill
 
     char* data = bridge_transaction_layer(ev);
@@ -1421,6 +1425,8 @@ ngx_stream_proxy_upstream_handler(ngx_event_t *ev)
     
     // ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,"proxy_process_downstream: addr"); 
     // dumpHex(u->downstream_buf.start , s, u->downstream_buf.end - u->downstream_buf.start); 
+
+    // int result = bridge_to_transaction_layer(ev);
     ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,"proxy_process_upstream"); 
     dumpHex(u->upstream_buf.start , s, u->upstream_buf.end - u->upstream_buf.start);
     ngx_stream_proxy_process_connection(ev, !ev->write);
