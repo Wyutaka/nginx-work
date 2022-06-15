@@ -5,7 +5,7 @@
 #include <string>
 #include "c++test.h"
 
-void bridge_transaction_layer(ngx_event_t *ev) 
+char* bridge_transaction_layer(ngx_event_t *ev) 
 {
   // ngx_connection_t *c = static_cast<ngx_connection_t*>(ev->data);
 
@@ -21,4 +21,5 @@ void bridge_transaction_layer(ngx_event_t *ev)
     writing_file << writing_text << std::endl;
     writing_file.close();
 
+    return "bridge_transaction";
 }
