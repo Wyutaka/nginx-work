@@ -1,8 +1,10 @@
 
-CC =	g++
-CFLAGS = -std=c++17 -pipe -O -W -g 
+CC =	gcc
+CFLAGS = -std=c99 -pipe -O -W -g
 CPP =	cc -E
-LINK =	$(CC)
+GXX = g++
+CXXFLAGS = -std=c++17 -pipe -O -W -g -fpermissive 
+LINK =	$(GXX)
 
 ALL_INCS = -I src/core \
 	-I src/event \
@@ -107,8 +109,14 @@ STREAM_DEPS = src/stream/ngx_stream.h \
 	src/stream/ngx_stream_script.h \
 	src/stream/ngx_stream_upstream.h \
 	src/stream/ngx_stream_upstream_round_robin.h \
-	src/stream/c++test.h
+	# src/stream/c++test.h
 
+MYPROXY_STREAM_DEPS = src/stream/ngx_stream.h \
+	src/stream/ngx_stream_variables.h \
+	src/stream/ngx_stream_script.h \
+	src/stream/ngx_stream_upstream.h \
+	src/stream/ngx_stream_upstream_round_robin.h \
+	src/stream/c++test.h
 
 STREAM_INCS = -I src/stream
 
@@ -243,6 +251,7 @@ objs/nginx:	objs/src/core/nginx.o \
 	objs/src/stream/ngx_stream_core_module.o \
 	objs/src/stream/ngx_stream_log_module.o \
 	objs/src/stream/ngx_stream_proxy_module.o \
+	objs/src/stream/c++test.o \
 	objs/src/stream/ngx_stream_upstream.o \
 	objs/src/stream/ngx_stream_upstream_round_robin.o \
 	objs/src/stream/ngx_stream_write_filter_module.o \
@@ -257,7 +266,6 @@ objs/nginx:	objs/src/core/nginx.o \
 	objs/src/stream/ngx_stream_upstream_least_conn_module.o \
 	objs/src/stream/ngx_stream_upstream_random_module.o \
 	objs/src/stream/ngx_stream_upstream_zone_module.o \
-	objs/src/stream/c++test.o \
 	objs/ngx_modules.o \
 	../pcre2-10.39/.libs/libpcre2-8.a
 
@@ -1258,7 +1266,7 @@ objs/src/stream/ngx_stream.o:	$(CORE_DEPS) $(STREAM_DEPS) \
 
 objs/src/stream/c++test.o:	$(CORE_DEPS) $(STREAM_DEPS) \
 	src/stream/c++test.cpp
-	$(CC) -c $(CFLAGS) $(CORE_INCS) $(STREAM_INCS) \
+	$(GXX) -c $(GXXFLAGS) $(CORE_INCS) $(STREAM_INCS) \
 		-o objs/src/stream/c++test.o \
 		src/stream/c++test.cpp
 
@@ -1296,7 +1304,7 @@ objs/src/stream/ngx_stream_log_module.o:	$(CORE_DEPS) $(STREAM_DEPS) \
 		-o objs/src/stream/ngx_stream_log_module.o \
 		src/stream/ngx_stream_log_module.c
 
-objs/src/stream/ngx_stream_proxy_module.o:	$(CORE_DEPS) $(STREAM_DEPS) \
+objs/src/stream/ngx_stream_proxy_module.o:	$(CORE_DEPS) $(MYPROXY_STREAM_DEPS) \
 	src/stream/ngx_stream_proxy_module.c
 	$(CC) -c $(CFLAGS) $(CORE_INCS) $(STREAM_INCS) \
 		-o objs/src/stream/ngx_stream_proxy_module.o \
