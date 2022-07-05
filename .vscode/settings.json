@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "c++test.hpp": "c"
+        "c++test.hpp": "c",
+        "ostream": "cpp"
     }
 }

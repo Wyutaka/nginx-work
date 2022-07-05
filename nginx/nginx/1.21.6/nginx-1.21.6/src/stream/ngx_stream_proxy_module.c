@@ -1334,11 +1334,13 @@ ngx_stream_proxy_downstream_handler(ngx_event_t *ev)
                    "proxy_process_downstream"); // 1回呼ばれている
     // return; // 意図的にkill
 
-    char* data = bridge_transaction_layer(ev);
-    ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
-                   data); // 1回呼ばれている    
-    dumpHex(u->downstream_buf.start , s, u->downstream_buf.end - u->downstream_buf.start); // data 3回呼ばれてる…？
+    // char* data = bridge_transaction_layer(ev);
+    // ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
+    //                data); // 1回呼ばれている    
+    // dumpHex(u->downstream_buf.start , s, u->downstream_buf.end - u->downstream_buf.start); // data 3回呼ばれてる…？
     ngx_stream_proxy_process_connection(ev, ev->write);
+    // upstream_handler
+    // ngx_stream_proxy_process_connection(ev, !ev->write);
 }
 
 
@@ -1411,18 +1413,20 @@ ngx_stream_proxy_resolve_handler(ngx_resolver_ctx_t *ctx)
 static void
 ngx_stream_proxy_upstream_handler(ngx_event_t *ev)
 {
-    ngx_connection_t             *c;
+    ngx_connection_t                *c;
     ngx_stream_session_t            *s;
     ngx_stream_upstream_t           *u;
     c = ev->data;
-    
     s = c->data;
     u = s->upstream;
     
     // ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,"proxy_process_downstream: addr"); 
     // dumpHex(u->downstream_buf.start , s, u->downstream_buf.end - u->downstream_buf.start); 
     ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,"proxy_process_upstream"); 
-    dumpHex(u->upstream_buf.start , s, u->upstream_buf.end - u->upstream_buf.start);
+    ngx_log_debug6(NGX_LOG_DEBUG_STREAM, c->log, 0,"startmembufwindow:%p, buf:lastmembufwindows:%p,file_start:%O,file_last:%O,startmembuf:%p,endmembuf:%p", 
+    u->upstream_buf.pos, u->upstream_buf.last, u->upstream_buf.file_pos, u->upstream_buf.file_last, u->upstream_buf.start, u->upstream_buf.end); 
+    u->upstream_buf.start[0] = 'A';
+    dumpHex(u->upstream_buf.start , s, 30);
     ngx_stream_proxy_process_connection(ev, !ev->write);
 }
 
@@ -1475,7 +1479,7 @@ ngx_stream_proxy_process_connection(ngx_event_t *ev, ngx_uint_t from_upstream)
             }
 
         } else {
-            if (s->connection->type == SOCK_DGRAM) {
+            if (s->connection->type == SOCK_DGRAM) { // データグラム指向(UDP)
 
                 if (pscf->responses == NGX_MAX_INT32_VALUE
                     || (u->responses >= pscf->responses * u->requests))
@@ -1853,7 +1857,7 @@ ngx_stream_proxy_process(ngx_stream_session_t *s, ngx_uint_t from_upstream,
                 n = 0;
             }
 
-            if (n >= 0) {
+            if (n >= 0) { //NGX_OK
                 if (limit_rate) {
                     delay = (ngx_msec_t) (n * 1000 / limit_rate);
 
