@@ -1823,7 +1823,7 @@ ngx_stream_proxy_process(ngx_stream_session_t *s, ngx_uint_t from_upstream,
                     dumpHex(b->last, s, 30);
                 }
 
-                rc = ngx_stream_top_filter(s, *out, from_upstream); // ここで送信?
+                rc = ngx_stream_top_filter(s, *out, from_upstream); // ここで送信?　//  funcPtr = func; 関数ポインタ
                 // rc = NGX_OK; // ここで送信?
                 
 
