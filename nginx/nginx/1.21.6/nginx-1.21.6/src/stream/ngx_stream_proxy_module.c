@@ -73,10 +73,12 @@ static void ngx_stream_proxy_upstream_handler(ngx_event_t *ev);
 static void ngx_stream_proxy_downstream_handler(ngx_event_t *ev);
 static void ngx_stream_proxy_process_connection(ngx_event_t *ev,
     ngx_uint_t from_upstream);
+static void ngx_stream_proxy_downstream_process_connection(ngx_event_t *ev, ngx_uint_t from_upstream);
 static void ngx_stream_proxy_connect_handler(ngx_event_t *ev);
 static ngx_int_t ngx_stream_proxy_test_connect(ngx_connection_t *c);
 static void ngx_stream_proxy_process(ngx_stream_session_t *s,
     ngx_uint_t from_upstream, ngx_uint_t do_write);
+static void ngx_stream_downstream_proxy_process(ngx_stream_session_t *s, ngx_uint_t from_upstream,ngx_uint_t do_write);
 static ngx_int_t ngx_stream_proxy_test_finalize(ngx_stream_session_t *s,
     ngx_uint_t from_upstream);
 static void ngx_stream_proxy_next_upstream(ngx_stream_session_t *s);
@@ -1331,16 +1333,16 @@ ngx_stream_proxy_downstream_handler(ngx_event_t *ev)
     u = s->upstream;
     
     ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
-                   "proxy_process_downstream"); // 1回呼ばれている
+                   "DOWNSTREAM_HANDLE"); // 1回呼ばれている 
     // return; // 意図的にkill
 
     // char* data = bridge_transaction_layer(ev);
     // ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
     //                data); // 1回呼ばれている    
     // dumpHex(u->downstream_buf.start , s, u->downstream_buf.end - u->downstream_buf.start); // data 3回呼ばれてる…？
-    ngx_stream_proxy_process_connection(ev, ev->write);
+    // ngx_stream_proxy_downstream_process_connection(ev, ev->write);
     // upstream_handler
-    // ngx_stream_proxy_process_connection(ev, !ev->write);
+    ngx_stream_proxy_process_connection(ev, ev->write);
 }
 
 
@@ -1419,14 +1421,21 @@ ngx_stream_proxy_upstream_handler(ngx_event_t *ev)
     c = ev->data;
     s = c->data;
     u = s->upstream;
+
+    ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
+                   "UPSTREAM_HANDLE"); 
     
-    // ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,"proxy_process_downstream: addr"); 
-    // dumpHex(u->downstream_buf.start , s, u->downstream_buf.end - u->downstream_buf.start); 
-    ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,"proxy_process_upstream"); 
-    ngx_log_debug6(NGX_LOG_DEBUG_STREAM, c->log, 0,"startmembufwindow:%p, buf:lastmembufwindows:%p,file_start:%O,file_last:%O,startmembuf:%p,endmembuf:%p", 
-    u->upstream_buf.pos, u->upstream_buf.last, u->upstream_buf.file_pos, u->upstream_buf.file_last, u->upstream_buf.start, u->upstream_buf.end); 
-    u->upstream_buf.start[0] = 'A';
-    dumpHex(u->upstream_buf.start , s, 30);
+    if (!ev->write)
+    {
+        ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
+                   "EV_WRITE!!!!!"); 
+    } else {
+        ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
+                   "EV_NOT_WRITE!!!!!"); 
+    }
+    
+    // ngx_log_debug6(NGX_LOG_DEBUG_STREAM, c->log, 0,"startmembufwindow:%p, buf:lastmembufwindows:%p,file_start:%O,file_last:%O,startmembuf:%p,endmembuf:%p", u->upstream_buf.pos, u->upstream_buf.last, u->upstream_buf.file_pos, u->upstream_buf.file_last, u->upstream_buf.start, u->upstream_buf.end); 
+    // dumpHex(u->upstream_buf.start , s, 30);
     ngx_stream_proxy_process_connection(ev, !ev->write);
 }
 
@@ -1442,10 +1451,7 @@ ngx_stream_proxy_process_connection(ngx_event_t *ev, ngx_uint_t from_upstream)
 
     c = ev->data;
     s = c->data;
-    u = s->upstream;
-
-    
-    ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0, "first ngx_stream_proxy_process");
+    u = s->upstream;    
 
     if (c->close) {
         ngx_log_error(NGX_LOG_INFO, c->log, 0, "shutdown timeout");
@@ -1536,12 +1542,11 @@ ngx_stream_proxy_process_connection(ngx_event_t *ev, ngx_uint_t from_upstream)
         return;
     }
 
-    if (from_upstream && !u->connected) {
-        return;
-    }
+    // if (from_upstream && !u->connected) {
+    //     return;
+    // }
     ngx_stream_proxy_process(s, from_upstream, ev->write);
 }
-
 
 static void
 ngx_stream_proxy_connect_handler(ngx_event_t *ev)
@@ -1560,13 +1565,13 @@ ngx_stream_proxy_connect_handler(ngx_event_t *ev)
 
     ngx_del_timer(c->write);
 
-    ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
-                   "stream proxy connect upstream");
+    // ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,
+    //                "stream proxy connect upstream");
 
-    if (ngx_stream_proxy_test_connect(c) != NGX_OK) {
-        ngx_stream_proxy_next_upstream(s);
-        return;
-    }
+    // if (ngx_stream_proxy_test_connect(c) != NGX_OK) { // nginx.confで設定したポートへのコネクションチェック
+    //     ngx_stream_proxy_next_upstream(s);
+    //     return;
+    // }
 
     ngx_stream_proxy_init_upstream(s);
 }
@@ -1763,11 +1768,8 @@ ngx_stream_proxy_process(ngx_stream_session_t *s, ngx_uint_t from_upstream,
 
         handler = c->log->handler;
         c->log->handler = NULL;
-
         ngx_log_error(NGX_LOG_INFO, c->log, 0, "disconnected on shutdown");
-
         c->log->handler = handler;
-
         ngx_stream_proxy_finalize(s, NGX_STREAM_OK);
         return;
     }
@@ -1806,17 +1808,43 @@ ngx_stream_proxy_process(ngx_stream_session_t *s, ngx_uint_t from_upstream,
             if (*out || *busy || dst->buffered) {
                 c->log->action = send_action;
 
-                rc = ngx_stream_top_filter(s, *out, from_upstream);
+                if (from_upstream)
+                {
+                    // ngx_log_debug1(NGX_LOG_DEBUG_STREAM, c->log, 0,"buffer upstream buf:%s", b);
+                    // dumpHex(b, s, 30);
+                    // ngx_log_debug1(NGX_LOG_DEBUG_STREAM, c->log, 0,"buffer downstream buf:%s", &u->downstream_buf);
+                    // dumpHex(&u->downstream_buf, s, 30);
+                    // ngx_log_debug1(NGX_LOG_DEBUG_STREAM, c->log, 0,"buffer peer connection buffer:%s", &pc->buffer);
+                    // dumpHex(&pc->buffer, s, 30);
+                    ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,"send buffer!!!! TEST!!!");
+                    dumpHex(&u->upstream_buf, s, 30);
+                    dumpHex(&u->upstream_buf.last, s, 30);
+                    b->last = "FUGA";
+                    dumpHex(b->last, s, 30);
+                }
+
+                rc = ngx_stream_top_filter(s, *out, from_upstream); // ここで送信?
+                // rc = NGX_OK; // ここで送信?
+                
 
                 if (rc == NGX_ERROR) {
+                    ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,"RESULT CODE is ERROR");
                     ngx_stream_proxy_finalize(s, NGX_STREAM_OK);
                     return;
                 }
 
+                ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0,"send buffer!!!!");
+                ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0, c->log->action);
+                // dumpHex(b, s, 30);
+                // b->start = "AAAAAAAA\n";
+                // dumpHex(b->start, s, 30);
+
                 ngx_chain_update_chains(c->pool, &u->free, busy, out,
                                       (ngx_buf_tag_t) &ngx_stream_proxy_module);
 
-                if (*busy == NULL) {
+                // ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0, c->pool->chain->buf->start);
+
+                if (*busy == NULL) { // どちらにせよ呼ばれている
                     b->pos = b->start;
                     b->last = b->start;
                 }
@@ -1847,6 +1875,13 @@ ngx_stream_proxy_process(ngx_stream_session_t *s, ngx_uint_t from_upstream,
             c->log->action = recv_action;
 
             n = src->recv(src, b->last, size);
+            if (from_upstream)
+            {
+                b->last = "HOGE";
+            }
+            
+            ngx_log_debug0(NGX_LOG_DEBUG_STREAM, c->log, 0, c->log->action);
+            dumpHex(b->last, s, 30);
 
             if (n == NGX_AGAIN) {
                 break;

@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jul  4 15:01:32 2022
+# Make data base, printed on Fri Jul 15 12:00:53 2022
 
 # Variables
 
@@ -65,13 +65,13 @@ HTTP_INCS = -I src/http -I src/http/modules
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/mint25mt/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/bin/remote-cli:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/mint25mt/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/Eclipse Adoptium/jdk-8.0.322.6-hotspot/bin:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files (x86)/kubectl:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Program Files (x86)/GtkSharp/2.12/bin:/mnt/c/Program Files/usbipd-win/:/mnt/c/Users/tihir/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/tihir/AppData/Local/Android/Sdk/platform-tools:/mnt/c/Users/tihir/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin:/usr/local/go/bin:/home/mint25mt/go/bin
+PATH = /home/mint25mt/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/bin/remote-cli:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/mint25mt/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/Eclipse Adoptium/jdk-8.0.322.6-hotspot/bin:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files (x86)/kubectl:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Program Files (x86)/GtkSharp/2.12/bin:/mnt/c/Program Files/usbipd-win/:/mnt/c/Users/tihir/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/tihir/AppData/Local/Android/Sdk/platform-tools:/mnt/c/Users/tihir/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/tihir/AppData/Local/JetBrains/Toolbox/scripts:/snap/bin:/usr/local/go/bin:/home/mint25mt/go/bin
 # makefile (from 'Makefile', line 19)
 CORE_DEPS = src/core/nginx.h src/core/ngx_config.h src/core/ngx_core.h src/core/ngx_log.h src/core/ngx_palloc.h src/core/ngx_array.h src/core/ngx_list.h src/core/ngx_hash.h src/core/ngx_buf.h src/core/ngx_queue.h src/core/ngx_string.h src/core/ngx_parse.h src/core/ngx_parse_time.h src/core/ngx_inet.h src/core/ngx_file.h src/core/ngx_crc.h src/core/ngx_crc32.h src/core/ngx_murmurhash.h src/core/ngx_md5.h src/core/ngx_sha1.h src/core/ngx_rbtree.h src/core/ngx_radix_tree.h src/core/ngx_rwlock.h src/core/ngx_slab.h src/core/ngx_times.h src/core/ngx_shmtx.h src/core/ngx_connection.h src/core/ngx_cycle.h src/core/ngx_conf_file.h src/core/ngx_module.h src/core/ngx_resolver.h src/core/ngx_open_file_cache.h src/core/ngx_crypt.h src/core/ngx_proxy_protocol.h src/core/ngx_syslog.h src/event/ngx_event.h src/event/ngx_event_timer.h src/event/ngx_event_posted.h src/event/ngx_event_connect.h src/event/ngx_event_pipe.h src/os/unix/ngx_time.h src/os/unix/ngx_errno.h src/os/unix/ngx_alloc.h src/os/unix/ngx_files.h src/os/unix/ngx_channel.h src/os/unix/ngx_shmem.h src/os/unix/ngx_process.h src/os/unix/ngx_setaffinity.h src/os/unix/ngx_setproctitle.h src/os/unix/ngx_atomic.h src/os/unix/ngx_gcc_atomic_x86.h src/os/unix/ngx_thread.h src/os/unix/ngx_socket.h src/os/unix/ngx_os.h src/os/unix/ngx_user.h src/os/unix/ngx_dlopen.h src/os/unix/ngx_process_cycle.h src/os/unix/ngx_linux_config.h src/os/unix/ngx_linux.h src/core/ngx_regex.h ../pcre2-10.39/src/pcre2.h objs/ngx_auto_config.h
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-15d44ae4-e643-47c9-83a9-a1bdcafb4bbd.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-1ae7c371-85b8-4110-8874-048519ae040b.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -184,8 +184,10 @@ TERM = xterm-256color
 VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 WSL_DISTRO_NAME = Ubuntu
+# environment
+MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=86/1024=8%, Rehash=0, Collisions=8/326=2%
+# Load=87/1024=8%, Rehash=0, Collisions=8/327=2%
 
 # Pattern-specific Variable Values
 
@@ -193,9 +195,9 @@ WSL_DISTRO_NAME = Ubuntu
 
 # Directories
 
-# . (device 2064, inode 180809): 21 files, no impossibilities.
+# . (device 2064, inode 180809): 22 files, no impossibilities.
 
-# 21 files, no impossibilities in 1 directories.
+# 22 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -267,9 +269,9 @@ objs/src/os/unix/ngx_posix_init.o: src/core/nginx.h src/core/ngx_config.h src/co
 src/os/unix/ngx_channel.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 
- 
 # Not a target:
 src/http/ngx_http_core_module.h:
 #  Implicit rule search has not been done.
@@ -518,9 +520,9 @@ all:
 #  File has not been updated.
 
 # Not a target:
+ 
 src/core/ngx_hash.c:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -827,7 +829,6 @@ src/core/ngx_log.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
 
 # Not a target:
 src/http/ngx_http_request.c:
@@ -866,6 +867,7 @@ src/event/ngx_event.c:
 src/http/modules/ngx_http_proxy_module.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 
 objs/src/core/ngx_module.o: src/core/nginx.h src/core/ngx_config.h src/core/ngx_core.h src/core/ngx_log.h src/core/ngx_palloc.h src/core/ngx_array.h src/core/ngx_list.h src/core/ngx_hash.h src/core/ngx_buf.h src/core/ngx_queue.h src/core/ngx_string.h src/core/ngx_parse.h src/core/ngx_parse_time.h src/core/ngx_inet.h src/core/ngx_file.h src/core/ngx_crc.h src/core/ngx_crc32.h src/core/ngx_murmurhash.h src/core/ngx_md5.h src/core/ngx_sha1.h src/core/ngx_rbtree.h src/core/ngx_radix_tree.h src/core/ngx_rwlock.h src/core/ngx_slab.h src/core/ngx_times.h src/core/ngx_shmtx.h src/core/ngx_connection.h src/core/ngx_cycle.h src/core/ngx_conf_file.h src/core/ngx_module.h src/core/ngx_resolver.h src/core/ngx_open_file_cache.h src/core/ngx_crypt.h src/core/ngx_proxy_protocol.h src/core/ngx_syslog.h src/event/ngx_event.h src/event/ngx_event_timer.h src/event/ngx_event_posted.h src/event/ngx_event_connect.h src/event/ngx_event_pipe.h src/os/unix/ngx_time.h src/os/unix/ngx_errno.h src/os/unix/ngx_alloc.h src/os/unix/ngx_files.h src/os/unix/ngx_channel.h src/os/unix/ngx_shmem.h src/os/unix/ngx_process.h src/os/unix/ngx_setaffinity.h src/os/unix/ngx_setproctitle.h src/os/unix/ngx_atomic.h src/os/unix/ngx_gcc_atomic_x86.h src/os/unix/ngx_thread.h src/os/unix/ngx_socket.h src/os/unix/ngx_os.h src/os/unix/ngx_user.h src/os/unix/ngx_dlopen.h src/os/unix/ngx_process_cycle.h src/os/unix/ngx_linux_config.h src/os/unix/ngx_linux.h src/core/ngx_regex.h ../pcre2-10.39/src/pcre2.h objs/ngx_auto_config.h src/core/ngx_module.c
@@ -1064,7 +1066,6 @@ src/http/ngx_http_upstream_round_robin.c:
 objs/ngx_modules.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
 #  File has not been updated.
 
 # Not a target:
@@ -1102,6 +1103,7 @@ src/http/modules/ngx_http_log_module.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 
 objs/src/os/unix/ngx_readv_chain.o: src/core/nginx.h src/core/ngx_config.h src/core/ngx_core.h src/core/ngx_log.h src/core/ngx_palloc.h src/core/ngx_array.h src/core/ngx_list.h src/core/ngx_hash.h src/core/ngx_buf.h src/core/ngx_queue.h src/core/ngx_string.h src/core/ngx_parse.h src/core/ngx_parse_time.h src/core/ngx_inet.h src/core/ngx_file.h src/core/ngx_crc.h src/core/ngx_crc32.h src/core/ngx_murmurhash.h src/core/ngx_md5.h src/core/ngx_sha1.h src/core/ngx_rbtree.h src/core/ngx_radix_tree.h src/core/ngx_rwlock.h src/core/ngx_slab.h src/core/ngx_times.h src/core/ngx_shmtx.h src/core/ngx_connection.h src/core/ngx_cycle.h src/core/ngx_conf_file.h src/core/ngx_module.h src/core/ngx_resolver.h src/core/ngx_open_file_cache.h src/core/ngx_crypt.h src/core/ngx_proxy_protocol.h src/core/ngx_syslog.h src/event/ngx_event.h src/event/ngx_event_timer.h src/event/ngx_event_posted.h src/event/ngx_event_connect.h src/event/ngx_event_pipe.h src/os/unix/ngx_time.h src/os/unix/ngx_errno.h src/os/unix/ngx_alloc.h src/os/unix/ngx_files.h src/os/unix/ngx_channel.h src/os/unix/ngx_shmem.h src/os/unix/ngx_process.h src/os/unix/ngx_setaffinity.h src/os/unix/ngx_setproctitle.h src/os/unix/ngx_atomic.h src/os/unix/ngx_gcc_atomic_x86.h src/os/unix/ngx_thread.h src/os/unix/ngx_socket.h src/os/unix/ngx_os.h src/os/unix/ngx_user.h src/os/unix/ngx_dlopen.h src/os/unix/ngx_process_cycle.h src/os/unix/ngx_linux_config.h src/os/unix/ngx_linux.h src/core/ngx_regex.h ../pcre2-10.39/src/pcre2.h objs/ngx_auto_config.h src/os/unix/ngx_readv_chain.c
 #  Implicit rule search has not been done.
@@ -1315,7 +1317,6 @@ objs/src/os/unix/ngx_process.o: src/core/nginx.h src/core/ngx_config.h src/core/
 		src/os/unix/ngx_process.c
 
 objs/src/stream/ngx_stream_upstream_zone_module.o: src/core/nginx.h src/core/ngx_config.h src/core/ngx_core.h src/core/ngx_log.h src/core/ngx_palloc.h src/core/ngx_array.h src/core/ngx_list.h src/core/ngx_hash.h src/core/ngx_buf.h src/core/ngx_queue.h src/core/ngx_string.h src/core/ngx_parse.h src/core/ngx_parse_time.h src/core/ngx_inet.h src/core/ngx_file.h src/core/ngx_crc.h src/core/ngx_crc32.h src/core/ngx_murmurhash.h src/core/ngx_md5.h src/core/ngx_sha1.h src/core/ngx_rbtree.h src/core/ngx_radix_tree.h src/core/ngx_rwlock.h src/core/ngx_slab.h src/core/ngx_times.h src/core/ngx_shmtx.h src/core/ngx_connection.h src/core/ngx_cycle.h src/core/ngx_conf_file.h src/core/ngx_module.h src/core/ngx_resolver.h src/core/ngx_open_file_cache.h src/core/ngx_crypt.h src/core/ngx_proxy_protocol.h src/core/ngx_syslog.h src/event/ngx_event.h src/event/ngx_event_timer.h src/event/ngx_event_posted.h src/event/ngx_event_connect.h src/event/ngx_event_pipe.h src/os/unix/ngx_time.h src/os/unix/ngx_errno.h src/os/unix/ngx_alloc.h src/os/unix/ngx_files.h src/os/unix/ngx_channel.h src/os/unix/ngx_shmem.h src/os/unix/ngx_process.h src/os/unix/ngx_setaffinity.h src/os/unix/ngx_setproctitle.h src/os/unix/ngx_atomic.h src/os/unix/ngx_gcc_atomic_x86.h src/os/unix/ngx_thread.h src/os/unix/ngx_socket.h src/os/unix/ngx_os.h src/os/unix/ngx_user.h src/os/unix/ngx_dlopen.h src/os/unix/ngx_process_cycle.h src/os/unix/ngx_linux_config.h src/os/unix/ngx_linux.h src/core/ngx_regex.h ../pcre2-10.39/src/pcre2.h objs/ngx_auto_config.h src/stream/ngx_stream.h src/stream/ngx_stream_variables.h src/stream/ngx_stream_script.h src/stream/ngx_stream_upstream.h src/stream/ngx_stream_upstream_round_robin.h src/stream/ngx_stream_upstream_zone_module.c
- 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -1362,6 +1363,7 @@ objs/src/http/ngx_http_parse.o: src/core/nginx.h src/core/ngx_config.h src/core/
 		-o objs/src/http/ngx_http_parse.o \
 		src/http/ngx_http_parse.c
 
+ 
 # Not a target:
 src/core/ngx_resolver.h:
 #  Implicit rule search has not been done.
@@ -1573,7 +1575,6 @@ objs/src/event/ngx_event.o: src/core/nginx.h src/core/ngx_config.h src/core/ngx_
 		src/event/ngx_event.c
 
 objs/src/core/ngx_regex.o: src/core/nginx.h src/core/ngx_config.h src/core/ngx_core.h src/core/ngx_log.h src/core/ngx_palloc.h src/core/ngx_array.h src/core/ngx_list.h src/core/ngx_hash.h src/core/ngx_buf.h src/core/ngx_queue.h src/core/ngx_string.h src/core/ngx_parse.h src/core/ngx_parse_time.h src/core/ngx_inet.h src/core/ngx_file.h src/core/ngx_crc.h src/core/ngx_crc32.h src/core/ngx_murmurhash.h src/core/ngx_md5.h src/core/ngx_sha1.h src/core/ngx_rbtree.h src/core/ngx_radix_tree.h src/core/ngx_rwlock.h src/core/ngx_slab.h src/core/ngx_times.h src/core/ngx_shmtx.h src/core/ngx_connection.h src/core/ngx_cycle.h src/core/ngx_conf_file.h src/core/ngx_module.h src/core/ngx_resolver.h src/core/ngx_open_file_cache.h src/core/ngx_crypt.h src/core/ngx_proxy_protocol.h src/core/ngx_syslog.h src/event/ngx_event.h src/event/ngx_event_timer.h src/event/ngx_event_posted.h src/event/ngx_event_connect.h src/event/ngx_event_pipe.h src/os/unix/ngx_time.h src/os/unix/ngx_errno.h src/os/unix/ngx_alloc.h src/os/unix/ngx_files.h src/os/unix/ngx_channel.h src/os/unix/ngx_shmem.h src/os/unix/ngx_process.h src/os/unix/ngx_setaffinity.h src/os/unix/ngx_setproctitle.h src/os/unix/ngx_atomic.h src/os/unix/ngx_gcc_atomic_x86.h src/os/unix/ngx_thread.h src/os/unix/ngx_socket.h src/os/unix/ngx_os.h src/os/unix/ngx_user.h src/os/unix/ngx_dlopen.h src/os/unix/ngx_process_cycle.h src/os/unix/ngx_linux_config.h src/os/unix/ngx_linux.h src/core/ngx_regex.h ../pcre2-10.39/src/pcre2.h objs/ngx_auto_config.h src/core/ngx_regex.c
- 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -1622,6 +1623,7 @@ src/http/modules/ngx_http_chunked_filter_module.c:
 src/http/modules/ngx_http_referer_module.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 
 # Not a target:
@@ -1817,7 +1819,6 @@ objs/src/http/modules/ngx_http_static_module.o: src/core/nginx.h src/core/ngx_co
 # Not a target:
 src/stream/ngx_stream_limit_conn_module.c:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -1870,6 +1871,7 @@ objs/src/core/ngx_open_file_cache.o: src/core/nginx.h src/core/ngx_config.h src/
 		src/core/ngx_open_file_cache.c
 
 # Not a target:
+ 
 src/core/ngx_connection.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -2079,7 +2081,6 @@ src/stream/c++test.cpp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
 
 objs/src/http/modules/ngx_http_range_filter_module.o: src/core/nginx.h src/core/ngx_config.h src/core/ngx_core.h src/core/ngx_log.h src/core/ngx_palloc.h src/core/ngx_array.h src/core/ngx_list.h src/core/ngx_hash.h src/core/ngx_buf.h src/core/ngx_queue.h src/core/ngx_string.h src/core/ngx_parse.h src/core/ngx_parse_time.h src/core/ngx_inet.h src/core/ngx_file.h src/core/ngx_crc.h src/core/ngx_crc32.h src/core/ngx_murmurhash.h src/core/ngx_md5.h src/core/ngx_sha1.h src/core/ngx_rbtree.h src/core/ngx_radix_tree.h src/core/ngx_rwlock.h src/core/ngx_slab.h src/core/ngx_times.h src/core/ngx_shmtx.h src/core/ngx_connection.h src/core/ngx_cycle.h src/core/ngx_conf_file.h src/core/ngx_module.h src/core/ngx_resolver.h src/core/ngx_open_file_cache.h src/core/ngx_crypt.h src/core/ngx_proxy_protocol.h src/core/ngx_syslog.h src/event/ngx_event.h src/event/ngx_event_timer.h src/event/ngx_event_posted.h src/event/ngx_event_connect.h src/event/ngx_event_pipe.h src/os/unix/ngx_time.h src/os/unix/ngx_errno.h src/os/unix/ngx_alloc.h src/os/unix/ngx_files.h src/os/unix/ngx_channel.h src/os/unix/ngx_shmem.h src/os/unix/ngx_process.h src/os/unix/ngx_setaffinity.h src/os/unix/ngx_setproctitle.h src/os/unix/ngx_atomic.h src/os/unix/ngx_gcc_atomic_x86.h src/os/unix/ngx_thread.h src/os/unix/ngx_socket.h src/os/unix/ngx_os.h src/os/unix/ngx_user.h src/os/unix/ngx_dlopen.h src/os/unix/ngx_process_cycle.h src/os/unix/ngx_linux_config.h src/os/unix/ngx_linux.h src/core/ngx_regex.h ../pcre2-10.39/src/pcre2.h objs/ngx_auto_config.h src/http/ngx_http.h src/http/ngx_http_request.h src/http/ngx_http_config.h src/http/ngx_http_core_module.h src/http/ngx_http_cache.h src/http/ngx_http_variables.h src/http/ngx_http_script.h src/http/ngx_http_upstream.h src/http/ngx_http_upstream_round_robin.h src/http/modules/ngx_http_ssi_filter_module.h src/http/modules/ngx_http_range_filter_module.c
 #  Implicit rule search has not been done.
@@ -2131,6 +2132,7 @@ objs/src/core/ngx_spinlock.o: src/core/nginx.h src/core/ngx_config.h src/core/ng
 	$(CC) -c $(CFLAGS) $(CORE_INCS) \
 		-o objs/src/core/ngx_spinlock.o \
 		src/core/ngx_spinlock.c
+ 
 
 objs/src/http/ngx_http_write_filter_module.o: src/core/nginx.h src/core/ngx_config.h src/core/ngx_core.h src/core/ngx_log.h src/core/ngx_palloc.h src/core/ngx_array.h src/core/ngx_list.h src/core/ngx_hash.h src/core/ngx_buf.h src/core/ngx_queue.h src/core/ngx_string.h src/core/ngx_parse.h src/core/ngx_parse_time.h src/core/ngx_inet.h src/core/ngx_file.h src/core/ngx_crc.h src/core/ngx_crc32.h src/core/ngx_murmurhash.h src/core/ngx_md5.h src/core/ngx_sha1.h src/core/ngx_rbtree.h src/core/ngx_radix_tree.h src/core/ngx_rwlock.h src/core/ngx_slab.h src/core/ngx_times.h src/core/ngx_shmtx.h src/core/ngx_connection.h src/core/ngx_cycle.h src/core/ngx_conf_file.h src/core/ngx_module.h src/core/ngx_resolver.h src/core/ngx_open_file_cache.h src/core/ngx_crypt.h src/core/ngx_proxy_protocol.h src/core/ngx_syslog.h src/event/ngx_event.h src/event/ngx_event_timer.h src/event/ngx_event_posted.h src/event/ngx_event_connect.h src/event/ngx_event_pipe.h src/os/unix/ngx_time.h src/os/unix/ngx_errno.h src/os/unix/ngx_alloc.h src/os/unix/ngx_files.h src/os/unix/ngx_channel.h src/os/unix/ngx_shmem.h src/os/unix/ngx_process.h src/os/unix/ngx_setaffinity.h src/os/unix/ngx_setproctitle.h src/os/unix/ngx_atomic.h src/os/unix/ngx_gcc_atomic_x86.h src/os/unix/ngx_thread.h src/os/unix/ngx_socket.h src/os/unix/ngx_os.h src/os/unix/ngx_user.h src/os/unix/ngx_dlopen.h src/os/unix/ngx_process_cycle.h src/os/unix/ngx_linux_config.h src/os/unix/ngx_linux.h src/core/ngx_regex.h ../pcre2-10.39/src/pcre2.h objs/ngx_auto_config.h src/http/ngx_http.h src/http/ngx_http_request.h src/http/ngx_http_config.h src/http/ngx_http_core_module.h src/http/ngx_http_cache.h src/http/ngx_http_variables.h src/http/ngx_http_script.h src/http/ngx_http_upstream.h src/http/ngx_http_upstream_round_robin.h src/http/modules/ngx_http_ssi_filter_module.h src/http/ngx_http_write_filter_module.c
 #  Implicit rule search has not been done.
@@ -2327,7 +2329,6 @@ objs/src/http/modules/ngx_http_proxy_module.o: src/core/nginx.h src/core/ngx_con
 #  recipe to execute (from 'Makefile', line 1173):
 	$(CC) -c $(CFLAGS) $(CORE_INCS) $(HTTP_INCS) \
 		-o objs/src/http/modules/ngx_http_proxy_module.o \
- 
 		src/http/modules/ngx_http_proxy_module.c
 
 # Not a target:
@@ -2380,6 +2381,7 @@ src/core/ngx_conf_file.h:
 
 # Not a target:
 src/http/ngx_http_cache.h:
+ 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -2586,7 +2588,6 @@ src/core/ngx_radix_tree.h:
 #  File has not been updated.
 
 objs/src/stream/ngx_stream_limit_conn_module.o: src/core/nginx.h src/core/ngx_config.h src/core/ngx_core.h src/core/ngx_log.h src/core/ngx_palloc.h src/core/ngx_array.h src/core/ngx_list.h src/core/ngx_hash.h src/core/ngx_buf.h src/core/ngx_queue.h src/core/ngx_string.h src/core/ngx_parse.h src/core/ngx_parse_time.h src/core/ngx_inet.h src/core/ngx_file.h src/core/ngx_crc.h src/core/ngx_crc32.h src/core/ngx_murmurhash.h src/core/ngx_md5.h src/core/ngx_sha1.h src/core/ngx_rbtree.h src/core/ngx_radix_tree.h src/core/ngx_rwlock.h src/core/ngx_slab.h src/core/ngx_times.h src/core/ngx_shmtx.h src/core/ngx_connection.h src/core/ngx_cycle.h src/core/ngx_conf_file.h src/core/ngx_module.h src/core/ngx_resolver.h src/core/ngx_open_file_cache.h src/core/ngx_crypt.h src/core/ngx_proxy_protocol.h src/core/ngx_syslog.h src/event/ngx_event.h src/event/ngx_event_timer.h src/event/ngx_event_posted.h src/event/ngx_event_connect.h src/event/ngx_event_pipe.h src/os/unix/ngx_time.h src/os/unix/ngx_errno.h src/os/unix/ngx_alloc.h src/os/unix/ngx_files.h src/os/unix/ngx_channel.h src/os/unix/ngx_shmem.h src/os/unix/ngx_process.h src/os/unix/ngx_setaffinity.h src/os/unix/ngx_setproctitle.h src/os/unix/ngx_atomic.h src/os/unix/ngx_gcc_atomic_x86.h src/os/unix/ngx_thread.h src/os/unix/ngx_socket.h src/os/unix/ngx_os.h src/os/unix/ngx_user.h src/os/unix/ngx_dlopen.h src/os/unix/ngx_process_cycle.h src/os/unix/ngx_linux_config.h src/os/unix/ngx_linux.h src/core/ngx_regex.h ../pcre2-10.39/src/pcre2.h objs/ngx_auto_config.h src/stream/ngx_stream.h src/stream/ngx_stream_variables.h src/stream/ngx_stream_script.h src/stream/ngx_stream_upstream.h src/stream/ngx_stream_upstream_round_robin.h src/stream/ngx_stream_limit_conn_module.c
- 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -2639,6 +2640,7 @@ src/core/ngx_parse.c:
 #  Modification time never checked.
 #  File has not been updated.
 
+ 
 objs/src/http/modules/ngx_http_uwsgi_module.o: src/core/nginx.h src/core/ngx_config.h src/core/ngx_core.h src/core/ngx_log.h src/core/ngx_palloc.h src/core/ngx_array.h src/core/ngx_list.h src/core/ngx_hash.h src/core/ngx_buf.h src/core/ngx_queue.h src/core/ngx_string.h src/core/ngx_parse.h src/core/ngx_parse_time.h src/core/ngx_inet.h src/core/ngx_file.h src/core/ngx_crc.h src/core/ngx_crc32.h src/core/ngx_murmurhash.h src/core/ngx_md5.h src/core/ngx_sha1.h src/core/ngx_rbtree.h src/core/ngx_radix_tree.h src/core/ngx_rwlock.h src/core/ngx_slab.h src/core/ngx_times.h src/core/ngx_shmtx.h src/core/ngx_connection.h src/core/ngx_cycle.h src/core/ngx_conf_file.h src/core/ngx_module.h src/core/ngx_resolver.h src/core/ngx_open_file_cache.h src/core/ngx_crypt.h src/core/ngx_proxy_protocol.h src/core/ngx_syslog.h src/event/ngx_event.h src/event/ngx_event_timer.h src/event/ngx_event_posted.h src/event/ngx_event_connect.h src/event/ngx_event_pipe.h src/os/unix/ngx_time.h src/os/unix/ngx_errno.h src/os/unix/ngx_alloc.h src/os/unix/ngx_files.h src/os/unix/ngx_channel.h src/os/unix/ngx_shmem.h src/os/unix/ngx_process.h src/os/unix/ngx_setaffinity.h src/os/unix/ngx_setproctitle.h src/os/unix/ngx_atomic.h src/os/unix/ngx_gcc_atomic_x86.h src/os/unix/ngx_thread.h src/os/unix/ngx_socket.h src/os/unix/ngx_os.h src/os/unix/ngx_user.h src/os/unix/ngx_dlopen.h src/os/unix/ngx_process_cycle.h src/os/unix/ngx_linux_config.h src/os/unix/ngx_linux.h src/core/ngx_regex.h ../pcre2-10.39/src/pcre2.h objs/ngx_auto_config.h src/http/ngx_http.h src/http/ngx_http_request.h src/http/ngx_http_config.h src/http/ngx_http_core_module.h src/http/ngx_http_cache.h src/http/ngx_http_variables.h src/http/ngx_http_script.h src/http/ngx_http_upstream.h src/http/ngx_http_upstream_round_robin.h src/http/modules/ngx_http_ssi_filter_module.h src/http/modules/ngx_http_uwsgi_module.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -2839,7 +2841,6 @@ objs/src/http/modules/ngx_http_fastcgi_module.o: src/core/nginx.h src/core/ngx_c
 
 # Not a target:
 src/os/unix/ngx_time.h:
- 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -2888,6 +2889,7 @@ objs/src/http/modules/ngx_http_access_module.o: src/core/nginx.h src/core/ngx_co
 
 # Not a target:
 src/os/unix/ngx_send.c:
+ 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -3099,15 +3101,14 @@ src/os/unix/ngx_writev_chain.c:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 2 (1) / strings = 399 / storage = 12402 B / avg = 31 B
+# strcache buffers: 2 (1) / strings = 400 / storage = 12409 B / avg = 31 B
 # current buf: size = 8162 B / used = 4255 B / count = 120 / avg = 35 B
-# other used: total = 8147 B / count = 279 / avg = 29 B
-# other free: total = 15 B / max = 15 B / min = 15 B / avg = 15 B
+# other used: total = 8154 B / count = 280 / avg = 29 B
+# other free: total = 8 B / max = 8 B / min = 8 B / avg = 8 B
 
-# strcache performance: lookups = 10055 / hit rate = 96%
+# strcache performance: lookups = 10056 / hit rate = 96%
 # hash-table stats:
- 
-# Load=399/8192=5%, Rehash=0, Collisions=37/10055=0%
-# Finished Make data base on Mon Jul  4 15:01:32 2022
+# Load=400/8192=5%, Rehash=0, Collisions=37/10056=0%
+# Finished Make data base on Fri Jul 15 12:00:53 2022
 
  

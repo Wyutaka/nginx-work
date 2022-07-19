@@ -9,6 +9,18 @@
 #include <unistd.h> //close()に利用
 #include <string> //string型
 
+#include <string>
+#include <cstdio>
+#include <vector>
+template <typename ... Args>
+std::string format(const std::string& fmt, Args ... args )
+{
+    size_t len = std::snprintf( nullptr, 0, fmt.c_str(), args ... );
+    std::vector<char> buf(len + 1);
+    std::snprintf(&buf[0], len + 1, fmt.c_str(), args ... );
+    return std::string(&buf[0], &buf[0] + len);
+}
+
 int main(){
 
 	//ソケットの生成
@@ -38,7 +50,10 @@ int main(){
 	//データ受信
 	char r_str[20]; //受信データ格納用
 	recv(sockfd, r_str, 20, 0); //受信
-	std::cout << r_str << std::endl; //標準出力
+	for(int i = 0; i < 20; i++) {
+		std::cout << format("%x ", r_str[i]) << std::endl; //標準出力
+	}
+	std::cout << r_str << std::endl;
 
 	//ソケットクローズ
 	close(sockfd);

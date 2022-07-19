@@ -25,7 +25,6 @@ yes
  
 checking for a thread-safe mkdir -p...  
 /usr/bin/mkdir -p
- 
 checking for gawk...  
 gawk
 checking whether make sets $(MAKE)...  
@@ -34,8 +33,8 @@ yes
 checking whether make supports nested variables...  
 yes
  
-checking whether make supports nested variables... (cached)  
-yes
+checking whether make supports nested variables...  
+(cached) yes
  
 checking for gcc... gcc
  
@@ -81,7 +80,6 @@ checking for egrep...
 /usr/bin/grep -E
 checking for ANSI C header files...  
 yes
- 
 checking for sys/types.h...  
 yes
  
@@ -120,8 +118,7 @@ checking for minix/config.h... no
 checking whether it is safe to define __EXTENSIONS__...  
 yes
  
-checking for ar...  
-ar
+checking for ar... ar
 checking the archiver (ar) interface...  
 ar
  
@@ -131,8 +128,7 @@ yes
 checking build system type...  
 x86_64-pc-linux-gnu
  
-checking host system type...  
-x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
  
 checking how to print strings...  
 printf
@@ -142,7 +138,6 @@ checking for a sed that does not truncate output...
  
 checking for fgrep...  
 /usr/bin/grep -F
- 
 checking for ld used by gcc...  
 /home/linuxbrew/.linuxbrew/bin/ld
  
@@ -156,20 +151,18 @@ checking the name lister (/home/linuxbrew/.linuxbrew/bin/nm -B) interface...
 BSD nm
  
 checking whether ln -s works... yes
- 
 checking the maximum length of command line arguments...  
 1572864
  
 checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format...  
 func_convert_file_noop
-checking how to convert x86_64-pc-linux-gnu file names to toolchain format...  
-func_convert_file_noop
-checking for /home/linuxbrew/.linuxbrew/bin/ld option to reload object files... -r
  
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /home/linuxbrew/.linuxbrew/bin/ld option to reload object files...  
+-r
 checking for objdump...  
 objdump
-checking how to recognize dependent libraries...  
-pass_all
+checking how to recognize dependent libraries... pass_all
  
 checking for dlltool...  
 dlltool
@@ -182,12 +175,12 @@ checking for strip...
 strip
  
 checking for ranlib... ranlib
- 
 checking command to parse /home/linuxbrew/.linuxbrew/bin/nm -B output from gcc object...  
 ok
  
 checking for sysroot...  
 no
+ 
 checking for a working dd...  
 /usr/bin/dd
  
@@ -226,7 +219,6 @@ checking dynamic linker characteristics...
 GNU/Linux ld.so
  
 checking how to hardcode library paths into programs... immediate
- 
 checking whether stripping libraries is possible...  
 yes
  
@@ -236,10 +228,8 @@ no
 checking whether to build static libraries... yes
  
 checking whether ln -s works... yes
- 
 checking whether the -Werror option is usable...  
 yes
- 
 checking for simple visibility declarations...  
 yes
  
@@ -254,8 +244,8 @@ yes
  
 checking for limits.h... yes
  
-checking for sys/types.h... (cached)  
-yes
+checking for sys/types.h...  
+(cached) yes
  
 checking for sys/stat.h...  
 (cached) yes
@@ -265,7 +255,9 @@ yes
  
 checking dirent.h presence...  
 yes
+ 
 checking for dirent.h... yes
+ 
 checking windows.h usability...  
 no
  
@@ -422,6 +414,7 @@ list=`for p in $list; do echo "$p"; done | sed 's/$//'`; \
 echo " rm -f" $list; \
 rm -f $list
 test -z "src/pcre2_chartables.c testSinput test3input test3output test3outputA test3outputB testtry teststdout teststderr teststderrgrep testtemp1grep testtemp2grep testtrygrep testNinputgrep" || rm -f src/pcre2_chartables.c testSinput test3input test3output test3outputA test3outputB testtry teststdout teststderr teststderrgrep testtemp1grep testtemp2grep testtrygrep testNinputgrep
+ 
 test -z "libpcre2-8.la   libpcre2-posix.la" || rm -f libpcre2-8.la   libpcre2-posix.la
 list='libpcre2-8.la   libpcre2-posix.la'; \
 locs=`for p in $list; do echo $p; done | \
@@ -432,7 +425,6 @@ test -z "$locs" || { \
   rm -f ${locs}; \
 }
 rm -rf .libs _libs
- 
 rm -rf src/.libs src/_libs
 test -z "" || rm -f 
 list='  '; test -n "$list" || exit 0; \
@@ -461,7 +453,6 @@ rm -f libtool config.lt
 rm -rf pcre2-10.39-coverage*
 rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH tags
 rm -f cscope.out cscope.in.out cscope.po.out cscope.files
- 
 rm -f config.status config.cache config.log configure.lineno config.status.lineno
 rm -f src/.deps/_libs_libpcre2_fuzzsupport_a-pcre2_fuzzsupport.Po
 rm -f src/.deps/libpcre2_16_la-pcre2_auto_possess.Plo
@@ -476,6 +467,7 @@ rm -f src/.deps/libpcre2_16_la-pcre2_extuni.Plo
 rm -f src/.deps/libpcre2_16_la-pcre2_find_bracket.Plo
 rm -f src/.deps/libpcre2_16_la-pcre2_jit_compile.Plo
 rm -f src/.deps/libpcre2_16_la-pcre2_maketables.Plo
+ 
 rm -f src/.deps/libpcre2_16_la-pcre2_match.Plo
 rm -f src/.deps/libpcre2_16_la-pcre2_match_data.Plo
 rm -f src/.deps/libpcre2_16_la-pcre2_newline.Plo
@@ -571,16 +563,15 @@ yes
 checking whether make supports nested variables...  
 yes
  
-checking whether make supports nested variables... (cached)  
-yes
+checking whether make supports nested variables...  
+(cached) yes
  
-checking for gcc...  
-gcc
+checking for gcc... gcc
  
 checking whether the C compiler works...  
 yes
-checking for C compiler default output file name...  
-a.out
+ 
+checking for C compiler default output file name... a.out
  
 checking for suffix of executables...  
 
@@ -617,6 +608,7 @@ checking for grep that handles long lines and -e...
  
 checking for egrep...  
 /usr/bin/grep -E
+ 
 checking for ANSI C header files...  
 yes
  
@@ -668,8 +660,8 @@ yes
 checking build system type...  
 x86_64-pc-linux-gnu
  
-checking host system type...  
-x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+ 
 checking how to print strings...  
 printf
  
@@ -678,6 +670,7 @@ checking for a sed that does not truncate output...
  
 checking for fgrep...  
 /usr/bin/grep -F
+ 
 checking for ld used by gcc...  
 /home/linuxbrew/.linuxbrew/bin/ld
  
@@ -691,37 +684,35 @@ checking the name lister (/home/linuxbrew/.linuxbrew/bin/nm -B) interface...
 BSD nm
  
 checking whether ln -s works... yes
- 
 checking the maximum length of command line arguments...  
 1572864
  
 checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format...  
 func_convert_file_noop
-checking how to convert x86_64-pc-linux-gnu file names to toolchain format...  
-func_convert_file_noop
+ 
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+ 
 checking for /home/linuxbrew/.linuxbrew/bin/ld option to reload object files... -r
  
 checking for objdump... objdump
 checking how to recognize dependent libraries...  
 pass_all
  
-checking for dlltool... dlltool
-checking how to associate runtime and link libraries... printf %s\n
- 
+checking for dlltool...  
+dlltool
+checking how to associate runtime and link libraries...  
+printf %s\n
 checking for archiver @FILE support...  
 @
  
 checking for strip...  
 strip
- 
 checking for ranlib...  
 ranlib
 checking command to parse /home/linuxbrew/.linuxbrew/bin/nm -B output from gcc object...  
 ok
  
-checking for sysroot...  
-no
- 
+checking for sysroot... no
 checking for a working dd...  
 /usr/bin/dd
  
@@ -761,15 +752,17 @@ checking dynamic linker characteristics...
 GNU/Linux ld.so
  
 checking how to hardcode library paths into programs... immediate
- 
 checking whether stripping libraries is possible...  
 yes
+ 
 checking if libtool supports shared libraries... yes
+ 
 checking whether to build shared libraries... no
-checking whether to build static libraries... yes
+checking whether to build static libraries...  
+yes
  
-checking whether ln -s works... yes
- 
+checking whether ln -s works...  
+yes
 checking whether the -Werror option is usable...  
 yes
  
@@ -790,8 +783,8 @@ checking for limits.h... yes
 checking for sys/types.h... (cached)  
 yes
  
-checking for sys/stat.h...  
-(cached) yes
+checking for sys/stat.h... (cached)  
+yes
  
 checking dirent.h usability...  
 yes
@@ -803,7 +796,6 @@ checking for dirent.h... yes
  
 checking windows.h usability...  
 no
- 
 checking windows.h presence...  
 no
  
@@ -828,7 +820,6 @@ yes
  
 checking for memfd_create...  
 yes
- 
 checking for memmove...  
 yes
  
@@ -966,10 +957,10 @@ gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs \
 	-o objs/src/core/ngx_hash.o \
 	src/core/ngx_hash.c
- 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs \
 	-o objs/src/core/ngx_buf.o \
 	src/core/ngx_buf.c
+ 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs \
 	-o objs/src/core/ngx_queue.o \
 	src/core/ngx_queue.c
@@ -1013,7 +1004,6 @@ gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs \
 	-o objs/src/core/ngx_slab.o \
 	src/core/ngx_slab.c
- 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs \
 	-o objs/src/core/ngx_times.o \
 	src/core/ngx_times.c
@@ -1032,6 +1022,7 @@ gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs \
 	-o objs/src/core/ngx_rwlock.o \
 	src/core/ngx_rwlock.c
+ 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs \
 	-o objs/src/core/ngx_cpuinfo.o \
 	src/core/ngx_cpuinfo.c
@@ -1044,7 +1035,6 @@ gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs \
 	-o objs/src/core/ngx_resolver.o \
 	src/core/ngx_resolver.c
- 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs \
 	-o objs/src/core/ngx_open_file_cache.o \
 	src/core/ngx_open_file_cache.c
@@ -1066,6 +1056,7 @@ gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs \
 	-o objs/src/event/ngx_event_posted.o \
 	src/event/ngx_event_posted.c
+ 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs \
 	-o objs/src/event/ngx_event_accept.o \
 	src/event/ngx_event_accept.c
@@ -1075,7 +1066,6 @@ gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs \
 	-o objs/src/event/ngx_event_connect.o \
 	src/event/ngx_event_connect.c
- 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs \
 	-o objs/src/event/ngx_event_pipe.o \
 	src/event/ngx_event_pipe.c
@@ -1100,10 +1090,10 @@ gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs \
 	-o objs/src/os/unix/ngx_readv_chain.o \
 	src/os/unix/ngx_readv_chain.c
+ 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs \
 	-o objs/src/os/unix/ngx_udp_recv.o \
 	src/os/unix/ngx_udp_recv.c
- 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs \
 	-o objs/src/os/unix/ngx_send.o \
 	src/os/unix/ngx_send.c
@@ -1150,7 +1140,6 @@ gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs \
 	-o objs/src/os/unix/ngx_linux_init.o \
 	src/os/unix/ngx_linux_init.c
- 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs \
 	-o objs/src/event/modules/ngx_epoll_module.o \
 	src/event/modules/ngx_epoll_module.c
@@ -1160,6 +1149,7 @@ gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs \
 	-o objs/src/core/ngx_regex.o \
 	src/core/ngx_regex.c
+ 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/ngx_http.o \
 	src/http/ngx_http.c
@@ -1172,13 +1162,13 @@ gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/ngx_http_request.o \
 	src/http/ngx_http_request.c
- 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/ngx_http_parse.o \
 	src/http/ngx_http_parse.c
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/modules/ngx_http_log_module.o \
 	src/http/modules/ngx_http_log_module.c
+ 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/ngx_http_request_body.o \
 	src/http/ngx_http_request_body.c
@@ -1197,7 +1187,6 @@ gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/ngx_http_file_cache.o \
 	src/http/ngx_http_file_cache.c
- 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/ngx_http_write_filter_module.o \
 	src/http/ngx_http_write_filter_module.c
@@ -1210,13 +1199,13 @@ gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/modules/ngx_http_range_filter_module.o \
 	src/http/modules/ngx_http_range_filter_module.c
+ 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/modules/ngx_http_gzip_filter_module.o \
 	src/http/modules/ngx_http_gzip_filter_module.c
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/ngx_http_postpone_filter_module.o \
 	src/http/ngx_http_postpone_filter_module.c
- 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/modules/ngx_http_ssi_filter_module.o \
 	src/http/modules/ngx_http_ssi_filter_module.c
@@ -1232,13 +1221,13 @@ gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/ngx_http_copy_filter_module.o \
 	src/http/ngx_http_copy_filter_module.c
+ 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/modules/ngx_http_not_modified_filter_module.o \
 	src/http/modules/ngx_http_not_modified_filter_module.c
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/modules/ngx_http_static_module.o \
 	src/http/modules/ngx_http_static_module.c
- 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/modules/ngx_http_autoindex_module.o \
 	src/http/modules/ngx_http_autoindex_module.c
@@ -1285,10 +1274,10 @@ gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/modules/ngx_http_fastcgi_module.o \
 	src/http/modules/ngx_http_fastcgi_module.c
- 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/modules/ngx_http_uwsgi_module.o \
 	src/http/modules/ngx_http_uwsgi_module.c
+ 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/modules/ngx_http_scgi_module.o \
 	src/http/modules/ngx_http_scgi_module.c
@@ -1307,7 +1296,6 @@ gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/modules/ngx_http_upstream_ip_hash_module.o \
 	src/http/modules/ngx_http_upstream_ip_hash_module.c
- 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/modules/ngx_http_upstream_least_conn_module.o \
 	src/http/modules/ngx_http_upstream_least_conn_module.c
@@ -1320,13 +1308,13 @@ gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/http -I src/http/modules \
 	-o objs/src/http/modules/ngx_http_upstream_zone_module.o \
 	src/http/modules/ngx_http_upstream_zone_module.c
+ 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/stream \
 	-o objs/src/stream/ngx_stream.o \
 	src/stream/ngx_stream.c
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/stream \
 	-o objs/src/stream/ngx_stream_variables.o \
 	src/stream/ngx_stream_variables.c
- 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/stream \
 	-o objs/src/stream/ngx_stream_script.o \
 	src/stream/ngx_stream_script.c
@@ -1348,6 +1336,7 @@ g++ -c  -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/stream \
 	-o objs/src/stream/ngx_stream_upstream.o \
 	src/stream/ngx_stream_upstream.c
+ 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/stream \
 	-o objs/src/stream/ngx_stream_upstream_round_robin.o \
 	src/stream/ngx_stream_upstream_round_robin.c
@@ -1357,7 +1346,6 @@ gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/stream \
 	-o objs/src/stream/ngx_stream_limit_conn_module.o \
 	src/stream/ngx_stream_limit_conn_module.c
- 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/stream \
 	-o objs/src/stream/ngx_stream_access_module.o \
 	src/stream/ngx_stream_access_module.c
@@ -1373,13 +1361,13 @@ gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/stream \
 	-o objs/src/stream/ngx_stream_return_module.o \
 	src/stream/ngx_stream_return_module.c
+ 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/stream \
 	-o objs/src/stream/ngx_stream_set_module.o \
 	src/stream/ngx_stream_set_module.c
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/stream \
 	-o objs/src/stream/ngx_stream_upstream_hash_module.o \
 	src/stream/ngx_stream_upstream_hash_module.c
- 
 gcc -c -std=c99 -pipe -O -W -g -I src/core -I src/event -I src/event/modules -I src/os/unix -I ../pcre2-10.39/src/ -I objs -I src/stream \
 	-o objs/src/stream/ngx_stream_upstream_least_conn_module.o \
 	src/stream/ngx_stream_upstream_least_conn_module.c
@@ -1512,6 +1500,7 @@ checking whether it is safe to define __EXTENSIONS__...
 yes
  
 checking for ar... ar
+ 
 checking the archiver (ar) interface...  
 ar
  
@@ -1521,8 +1510,8 @@ yes
 checking build system type...  
 x86_64-pc-linux-gnu
  
-checking host system type...  
-x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+ 
 checking how to print strings...  
 printf
  
@@ -1544,7 +1533,6 @@ checking the name lister (/home/linuxbrew/.linuxbrew/bin/nm -B) interface...
 BSD nm
  
 checking whether ln -s works... yes
- 
 checking the maximum length of command line arguments...  
 1572864
  
@@ -1559,9 +1547,10 @@ objdump
 checking how to recognize dependent libraries...  
 pass_all
  
-checking for dlltool... dlltool
-checking how to associate runtime and link libraries...  
-printf %s\n
+checking for dlltool...  
+dlltool
+checking how to associate runtime and link libraries... printf %s\n
+ 
 checking for archiver @FILE support...  
 @
  
@@ -1573,16 +1562,13 @@ checking command to parse /home/linuxbrew/.linuxbrew/bin/nm -B output from gcc o
 ok
  
 checking for sysroot... no
- 
 checking for a working dd...  
 /usr/bin/dd
- 
 checking how to truncate binary pipes...  
 /usr/bin/dd bs=4096 count=1
  
 checking for mt...  
 mt
- 
 checking if mt is a manifest tool...  
 no
  
@@ -1595,18 +1581,18 @@ checking for objdir...
 checking if gcc supports -fno-rtti -fno-exceptions...  
 no
  
-checking for gcc option to produce PIC... -fPIC -DPIC
- 
+checking for gcc option to produce PIC...  
+-fPIC -DPIC
 checking if gcc PIC flag -fPIC -DPIC works...  
 yes
  
 checking if gcc static flag -static works...  
 yes
+ 
 checking if gcc supports -c -o file.o...  
 yes
  
 checking if gcc supports -c -o file.o... (cached) yes
- 
 checking whether the gcc linker (/home/linuxbrew/.linuxbrew/bin/ld -m elf_x86_64) supports shared libraries...  
 yes
  
@@ -1620,10 +1606,11 @@ yes
 checking if libtool supports shared libraries... yes
 checking whether to build shared libraries... no
 checking whether to build static libraries... yes
+ 
 checking whether ln -s works... yes
+ 
 checking whether the -Werror option is usable...  
 yes
- 
 checking for simple visibility declarations...  
 yes
  
@@ -1632,41 +1619,34 @@ no
  
 checking limits.h usability...  
 yes
- 
 checking limits.h presence...  
 yes
- 
-checking for limits.h... yes
- 
-checking for sys/types.h... (cached)  
+checking for limits.h...  
 yes
  
-checking for sys/stat.h...  
-(cached) yes
+checking for sys/types.h... (cached) yes
+ 
+checking for sys/stat.h... (cached) yes
  
 checking dirent.h usability...  
 yes
- 
 checking dirent.h presence...  
 yes
- 
 checking for dirent.h... yes
  
 checking windows.h usability...  
 no
- 
 checking windows.h presence...  
 no
- 
 checking for windows.h... no
- 
 checking sys/wait.h usability...  
 yes
  
 checking sys/wait.h presence...  
 yes
  
-checking for sys/wait.h... yes
+checking for sys/wait.h...  
+yes
  
 checking for an ANSI C-conforming const...  
 yes
@@ -1701,7 +1681,8 @@ yes
 checking zlib.h presence...  
 yes
  
-checking for zlib.h... yes
+checking for zlib.h...  
+yes
  
 checking for gzopen in -lz...  
 yes
@@ -1711,8 +1692,8 @@ no
  
 checking bzlib.h presence...  
 no
- 
-checking for bzlib.h... no
+checking for bzlib.h...  
+no
  
 checking for libbz2...  
 no
@@ -1811,11 +1792,11 @@ echo "  CC      " src/libpcre2_8_la-pcre2_compile.lo;/bin/bash ./libtool --silen
 mv -f src/.deps/libpcre2_8_la-pcre2_compile.Tpo src/.deps/libpcre2_8_la-pcre2_compile.Plo
 echo "  CC      " src/libpcre2_8_la-pcre2_config.lo;/bin/bash ./libtool --silent --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I./src  "-I./src"  -DPCRE2_CODE_UNIT_WIDTH=8 -fvisibility=hidden -mshstk    -O2 -fomit-frame-pointer -pipe  -MT src/libpcre2_8_la-pcre2_config.lo -MD -MP -MF src/.deps/libpcre2_8_la-pcre2_config.Tpo -c -o src/libpcre2_8_la-pcre2_config.lo `test -f 'src/pcre2_config.c' || echo './'`src/pcre2_config.c
 mv -f src/.deps/libpcre2_8_la-pcre2_config.Tpo src/.deps/libpcre2_8_la-pcre2_config.Plo
- 
 echo "  CC      " src/libpcre2_8_la-pcre2_context.lo;/bin/bash ./libtool --silent --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I./src  "-I./src"  -DPCRE2_CODE_UNIT_WIDTH=8 -fvisibility=hidden -mshstk    -O2 -fomit-frame-pointer -pipe  -MT src/libpcre2_8_la-pcre2_context.lo -MD -MP -MF src/.deps/libpcre2_8_la-pcre2_context.Tpo -c -o src/libpcre2_8_la-pcre2_context.lo `test -f 'src/pcre2_context.c' || echo './'`src/pcre2_context.c
 mv -f src/.deps/libpcre2_8_la-pcre2_context.Tpo src/.deps/libpcre2_8_la-pcre2_context.Plo
 echo "  CC      " src/libpcre2_8_la-pcre2_convert.lo;/bin/bash ./libtool --silent --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I./src  "-I./src"  -DPCRE2_CODE_UNIT_WIDTH=8 -fvisibility=hidden -mshstk    -O2 -fomit-frame-pointer -pipe  -MT src/libpcre2_8_la-pcre2_convert.lo -MD -MP -MF src/.deps/libpcre2_8_la-pcre2_convert.Tpo -c -o src/libpcre2_8_la-pcre2_convert.lo `test -f 'src/pcre2_convert.c' || echo './'`src/pcre2_convert.c
 mv -f src/.deps/libpcre2_8_la-pcre2_convert.Tpo src/.deps/libpcre2_8_la-pcre2_convert.Plo
+ 
 echo "  CC      " src/libpcre2_8_la-pcre2_dfa_match.lo;/bin/bash ./libtool --silent --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I./src  "-I./src"  -DPCRE2_CODE_UNIT_WIDTH=8 -fvisibility=hidden -mshstk    -O2 -fomit-frame-pointer -pipe  -MT src/libpcre2_8_la-pcre2_dfa_match.lo -MD -MP -MF src/.deps/libpcre2_8_la-pcre2_dfa_match.Tpo -c -o src/libpcre2_8_la-pcre2_dfa_match.lo `test -f 'src/pcre2_dfa_match.c' || echo './'`src/pcre2_dfa_match.c
 mv -f src/.deps/libpcre2_8_la-pcre2_dfa_match.Tpo src/.deps/libpcre2_8_la-pcre2_dfa_match.Plo
 echo "  CC      " src/libpcre2_8_la-pcre2_error.lo;/bin/bash ./libtool --silent --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I./src  "-I./src"  -DPCRE2_CODE_UNIT_WIDTH=8 -fvisibility=hidden -mshstk    -O2 -fomit-frame-pointer -pipe  -MT src/libpcre2_8_la-pcre2_error.lo -MD -MP -MF src/.deps/libpcre2_8_la-pcre2_error.Tpo -c -o src/libpcre2_8_la-pcre2_error.lo `test -f 'src/pcre2_error.c' || echo './'`src/pcre2_error.c
@@ -1824,7 +1805,6 @@ echo "  CC      " src/libpcre2_8_la-pcre2_extuni.lo;/bin/bash ./libtool --silent
 mv -f src/.deps/libpcre2_8_la-pcre2_extuni.Tpo src/.deps/libpcre2_8_la-pcre2_extuni.Plo
 echo "  CC      " src/libpcre2_8_la-pcre2_find_bracket.lo;/bin/bash ./libtool --silent --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I./src  "-I./src"  -DPCRE2_CODE_UNIT_WIDTH=8 -fvisibility=hidden -mshstk    -O2 -fomit-frame-pointer -pipe  -MT src/libpcre2_8_la-pcre2_find_bracket.lo -MD -MP -MF src/.deps/libpcre2_8_la-pcre2_find_bracket.Tpo -c -o src/libpcre2_8_la-pcre2_find_bracket.lo `test -f 'src/pcre2_find_bracket.c' || echo './'`src/pcre2_find_bracket.c
 mv -f src/.deps/libpcre2_8_la-pcre2_find_bracket.Tpo src/.deps/libpcre2_8_la-pcre2_find_bracket.Plo
- 
 echo "  CC      " src/libpcre2_8_la-pcre2_jit_compile.lo;/bin/bash ./libtool --silent --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I./src  "-I./src"  -DPCRE2_CODE_UNIT_WIDTH=8 -fvisibility=hidden -mshstk    -O2 -fomit-frame-pointer -pipe  -MT src/libpcre2_8_la-pcre2_jit_compile.lo -MD -MP -MF src/.deps/libpcre2_8_la-pcre2_jit_compile.Tpo -c -o src/libpcre2_8_la-pcre2_jit_compile.lo `test -f 'src/pcre2_jit_compile.c' || echo './'`src/pcre2_jit_compile.c
 mv -f src/.deps/libpcre2_8_la-pcre2_jit_compile.Tpo src/.deps/libpcre2_8_la-pcre2_jit_compile.Plo
 echo "  CC      " src/libpcre2_8_la-pcre2_maketables.lo;/bin/bash ./libtool --silent --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I./src  "-I./src"  -DPCRE2_CODE_UNIT_WIDTH=8 -fvisibility=hidden -mshstk    -O2 -fomit-frame-pointer -pipe  -MT src/libpcre2_8_la-pcre2_maketables.lo -MD -MP -MF src/.deps/libpcre2_8_la-pcre2_maketables.Tpo -c -o src/libpcre2_8_la-pcre2_maketables.lo `test -f 'src/pcre2_maketables.c' || echo './'`src/pcre2_maketables.c
@@ -1835,6 +1815,7 @@ echo "  CC      " src/libpcre2_8_la-pcre2_match_data.lo;/bin/bash ./libtool --si
 mv -f src/.deps/libpcre2_8_la-pcre2_match_data.Tpo src/.deps/libpcre2_8_la-pcre2_match_data.Plo
 echo "  CC      " src/libpcre2_8_la-pcre2_newline.lo;/bin/bash ./libtool --silent --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I./src  "-I./src"  -DPCRE2_CODE_UNIT_WIDTH=8 -fvisibility=hidden -mshstk    -O2 -fomit-frame-pointer -pipe  -MT src/libpcre2_8_la-pcre2_newline.lo -MD -MP -MF src/.deps/libpcre2_8_la-pcre2_newline.Tpo -c -o src/libpcre2_8_la-pcre2_newline.lo `test -f 'src/pcre2_newline.c' || echo './'`src/pcre2_newline.c
 mv -f src/.deps/libpcre2_8_la-pcre2_newline.Tpo src/.deps/libpcre2_8_la-pcre2_newline.Plo
+ 
 echo "  CC      " src/libpcre2_8_la-pcre2_ord2utf.lo;/bin/bash ./libtool --silent --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I./src  "-I./src"  -DPCRE2_CODE_UNIT_WIDTH=8 -fvisibility=hidden -mshstk    -O2 -fomit-frame-pointer -pipe  -MT src/libpcre2_8_la-pcre2_ord2utf.lo -MD -MP -MF src/.deps/libpcre2_8_la-pcre2_ord2utf.Tpo -c -o src/libpcre2_8_la-pcre2_ord2utf.lo `test -f 'src/pcre2_ord2utf.c' || echo './'`src/pcre2_ord2utf.c
 mv -f src/.deps/libpcre2_8_la-pcre2_ord2utf.Tpo src/.deps/libpcre2_8_la-pcre2_ord2utf.Plo
 echo "  CC      " src/libpcre2_8_la-pcre2_pattern_info.lo;/bin/bash ./libtool --silent --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I./src  "-I./src"  -DPCRE2_CODE_UNIT_WIDTH=8 -fvisibility=hidden -mshstk    -O2 -fomit-frame-pointer -pipe  -MT src/libpcre2_8_la-pcre2_pattern_info.lo -MD -MP -MF src/.deps/libpcre2_8_la-pcre2_pattern_info.Tpo -c -o src/libpcre2_8_la-pcre2_pattern_info.lo `test -f 'src/pcre2_pattern_info.c' || echo './'`src/pcre2_pattern_info.c
@@ -1851,7 +1832,6 @@ echo "  CC      " src/libpcre2_8_la-pcre2_substitute.lo;/bin/bash ./libtool --si
 mv -f src/.deps/libpcre2_8_la-pcre2_substitute.Tpo src/.deps/libpcre2_8_la-pcre2_substitute.Plo
 echo "  CC      " src/libpcre2_8_la-pcre2_substring.lo;/bin/bash ./libtool --silent --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I./src  "-I./src"  -DPCRE2_CODE_UNIT_WIDTH=8 -fvisibility=hidden -mshstk    -O2 -fomit-frame-pointer -pipe  -MT src/libpcre2_8_la-pcre2_substring.lo -MD -MP -MF src/.deps/libpcre2_8_la-pcre2_substring.Tpo -c -o src/libpcre2_8_la-pcre2_substring.lo `test -f 'src/pcre2_substring.c' || echo './'`src/pcre2_substring.c
 mv -f src/.deps/libpcre2_8_la-pcre2_substring.Tpo src/.deps/libpcre2_8_la-pcre2_substring.Plo
- 
 echo "  CC      " src/libpcre2_8_la-pcre2_tables.lo;/bin/bash ./libtool --silent --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I./src  "-I./src"  -DPCRE2_CODE_UNIT_WIDTH=8 -fvisibility=hidden -mshstk    -O2 -fomit-frame-pointer -pipe  -MT src/libpcre2_8_la-pcre2_tables.lo -MD -MP -MF src/.deps/libpcre2_8_la-pcre2_tables.Tpo -c -o src/libpcre2_8_la-pcre2_tables.lo `test -f 'src/pcre2_tables.c' || echo './'`src/pcre2_tables.c
 mv -f src/.deps/libpcre2_8_la-pcre2_tables.Tpo src/.deps/libpcre2_8_la-pcre2_tables.Plo
 echo "  CC      " src/libpcre2_8_la-pcre2_ucd.lo;/bin/bash ./libtool --silent --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I./src  "-I./src"  -DPCRE2_CODE_UNIT_WIDTH=8 -fvisibility=hidden -mshstk    -O2 -fomit-frame-pointer -pipe  -MT src/libpcre2_8_la-pcre2_ucd.lo -MD -MP -MF src/.deps/libpcre2_8_la-pcre2_ucd.Tpo -c -o src/libpcre2_8_la-pcre2_ucd.lo `test -f 'src/pcre2_ucd.c' || echo './'`src/pcre2_ucd.c
@@ -1867,7 +1847,6 @@ echo "  CC      " src/libpcre2_8_la-pcre2_chartables.lo;/bin/bash ./libtool --si
 mv -f src/.deps/libpcre2_8_la-pcre2_chartables.Tpo src/.deps/libpcre2_8_la-pcre2_chartables.Plo
 echo "  CCLD    " libpcre2-8.la;/bin/bash ./libtool --silent --tag=CC   --mode=link gcc -DPCRE2_CODE_UNIT_WIDTH=8 -fvisibility=hidden -mshstk    -O2 -fomit-frame-pointer -pipe  -version-info 10:4:10  -o libpcre2-8.la -rpath /usr/local/lib src/libpcre2_8_la-pcre2_auto_possess.lo src/libpcre2_8_la-pcre2_compile.lo src/libpcre2_8_la-pcre2_config.lo src/libpcre2_8_la-pcre2_context.lo src/libpcre2_8_la-pcre2_convert.lo src/libpcre2_8_la-pcre2_dfa_match.lo src/libpcre2_8_la-pcre2_error.lo src/libpcre2_8_la-pcre2_extuni.lo src/libpcre2_8_la-pcre2_find_bracket.lo src/libpcre2_8_la-pcre2_jit_compile.lo src/libpcre2_8_la-pcre2_maketables.lo src/libpcre2_8_la-pcre2_match.lo src/libpcre2_8_la-pcre2_match_data.lo src/libpcre2_8_la-pcre2_newline.lo src/libpcre2_8_la-pcre2_ord2utf.lo src/libpcre2_8_la-pcre2_pattern_info.lo src/libpcre2_8_la-pcre2_script_run.lo src/libpcre2_8_la-pcre2_serialize.lo src/libpcre2_8_la-pcre2_string_utils.lo src/libpcre2_8_la-pcre2_study.lo src/libpcre2_8_la-pcre2_substitute.lo src/libpcre2_8_la-pcre2_substring.lo src/libpcre2_8_la-pcre2_tables.lo src/libpcre2_8_la-pcre2_ucd.lo src/libpcre2_8_la-pcre2_valid_utf.lo src/libpcre2_8_la-pcre2_xclass.lo src/libpcre2_8_la-pcre2_chartables.lo  
 make[1]: Leaving directory '/home/mint25mt/nginx-work/nginx/nginx/1.21.6/pcre2-10.39'
- 
 g++ -o objs/nginx \
 objs/src/core/nginx.o \
 objs/src/core/ngx_log.o \
